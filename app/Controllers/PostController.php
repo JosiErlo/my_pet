@@ -14,7 +14,8 @@ class PostController extends BaseController
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
         $tipo_post_id = $this->request->getPost('tipo_post_id');
-debug($this->request->getPost());
+        
+        debug($this->request->getPost());
         // Validar os dados usando as ferramentas de validação do CodeIgniter
         $validation = \Config\Services::validation();
         $validation->setRules([

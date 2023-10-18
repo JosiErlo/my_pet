@@ -7,10 +7,10 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table = 'users';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['email', 'password'];
-    protected $returnType = User::class;
+    protected $table = 'users'; // O nome da tabela de banco de dados associada a esta classe.
+    protected $primaryKey = 'id'; // A chave primária da tabela.
+    protected $allowedFields = ['email', 'password']; // Campos permitidos para inserção/edição.
+    protected $returnType = User::class; // O tipo de retorno para os resultados da consulta.
 
     protected $validationRules = [
         'email' => 'required|valid_email',
@@ -25,7 +25,7 @@ class UserModel extends Model
 
     public function getUser($email)
     {
-        return $this->where('email', $email)->first();
+        return $this->where('email', $email)->first(); // Obtém um usuário com base no endereço de e-mail.
     }
 
     public function createUser($email, $hashedPassword)
@@ -35,6 +35,6 @@ class UserModel extends Model
             'password' => $hashedPassword
         ];
 
-        return $this->insert($data);
+        return $this->insert($data); // Insere um novo usuário no banco de dados.
     }
 }

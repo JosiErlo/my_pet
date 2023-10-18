@@ -10,11 +10,14 @@ class CommentModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = ['post_id', 'content'];
 
-    public function addComment($postID, $commentText)
+    public function addComment($postID, $commentText,$userID)
     {
         $data = [
             'post_id' => $postID,
             'content' => $commentText,
+            'user_id' => $userID,
+          
+
         ];
 
         return $this->insert($data);
