@@ -29,7 +29,7 @@ if (isset($_SESSION['user_id'])) {
 
     <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 
-    <form action="<?= site_url('comment/add'); ?>" method="post">
+    <form action="<?= site_url('addComment'); ?>" method="post">
         <input type="hidden" name="user_id" value="<?= $userID ?>">
         <input type="hidden" name="post_id" value="<?= $post['id']; ?>">
         <textarea name="content" placeholder="Adicione seu comentário"></textarea>
@@ -37,21 +37,21 @@ if (isset($_SESSION['user_id'])) {
     </form>
 
     <!-- Exiba a lista de comentários associados à postagem -->
-   <!-- Seção de comentários -->
-<div class="comments-section">
-    <?php if (!empty($comments)) : ?>
-        <h2>Comentários:</h2>
-        <ul>
-            <?php foreach ($comments as $comment) : ?>
-                <li>
-                    <p><?= $comment['content']; ?></p>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else : ?>
-        <p>Nenhum comentário ainda.</p>
-    <?php endif; ?>
-</div>
+    <!-- Seção de comentários -->
+    <div class="comments-section">
+        <?php if (!empty($comments)) : ?>
+            <h2>Comentários:</h2>
+            <ul>
+                <?php foreach ($comments as $comment) : ?>
+                    <li>
+                        <p><?= $comment['content']; ?></p>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else : ?>
+            <p>Nenhum comentário ainda.</p>
+        <?php endif; ?>
+    </div>
 
 </body>
 

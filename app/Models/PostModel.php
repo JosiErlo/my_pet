@@ -44,6 +44,7 @@ class PostModel extends Model
 
         return $query->getResultArray();
     }
+    
 
     public function findByCategory($category)
     {

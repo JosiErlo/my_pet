@@ -19,6 +19,9 @@ class CommentController extends Controller
 
     public function addComment()
     {
+        if (!session()->get('loggedin')) {
+            return redirect()->to('login')->with('error', 'Você precisa fazer login para criar um comentário.');
+        }
         if ($this->request->getMethod() === 'post') {
             $validation = \Config\Services::validation();
             $validationRules = [
@@ -26,37 +29,43 @@ class CommentController extends Controller
                 'user_id' => 'required',
                 'post_id' => 'required',
             ];
-
+    // debug($this->request->getPost());
             if (!$this->validate($validationRules)) {
                 return redirect()->to(site_url('blog/viewpost/' . $this->request->getPost('post_id')))
                     ->with('errors', $validation->getErrors());
             }
-
+    
             $commentText = $this->request->getPost('content');
             $userID = $this->request->getPost('user_id');
             $postID = $this->request->getPost('post_id');
-
-            // Verifique se o usuário com o ID especificado existe
             $user = $this->userModel->find($userID);
+    
             if (!$user) {
                 return redirect()->to(site_url('blog/viewpost/' . $postID))->with('error', 'Usuário não encontrado.');
             }
-
+    
             // Crie um array com os dados do comentário
             $commentData = [
                 'post_id' => $postID,
                 'content' => $commentText,
                 'user_id' => $userID,
-                'created_at' => date('Y-m-d H:i:s'), // Inclua a data de criação
+                'created_at' => date('Y-m-d H:i:s'),
             ];
-
-            // Insira o comentário no banco de dados
-            $this->commentModel->insert($commentData);
-
+    
+            // Obtenha o serviço de banco de dados padrão do CodeIgniter
+            $db = \Config\Database::connect();
+    
+            // Inserir o comentário no banco de dados usando o Query Builder
+            $db->table('comments')->insert($commentData);
+    
             // Redirecione de volta à página de visualização da postagem
             return redirect()->to(site_url('blog/viewpost/' . $postID))->with('success', 'Comentário adicionado com sucesso.');
         }
-    }
+    }    
+
+
+    
+    
 
     public function viewComments($postId)
     {
@@ -68,4 +77,7 @@ class CommentController extends Controller
 
         return view('viewpost', ['post' => $post, 'comments' => $comments]);
     }
+
+// debug($this->request->getPost());
+
 }
