@@ -64,7 +64,7 @@ class AuthController extends Controller
         // Verifique se o usuário já está autenticado
         if (session()->get('loggedin')) {
             // Usuário já autenticado, redirecione para a página de boas-vindas
-            return redirect()->to('/bem-vindo');
+            return redirect()->to('/login');
         }
 
         // Se o usuário não estiver autenticado, exiba a página de formulário de login
