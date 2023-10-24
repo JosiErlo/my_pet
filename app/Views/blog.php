@@ -20,7 +20,7 @@
     </div>
 
     <div class="post">
-         <p>
+        <p>
             Ter um animal de estimação pode trazer inúmeros benefícios
             para a nossa vida. Além de nos proporcionarem companhia e alegria,
             os pets têm um impacto positivo em nossa saúde física, emocional e social.
@@ -36,31 +36,38 @@
             você tem com seu animalzinho.
         </p>
     </div>
-
     <form action="<?= site_url('blog') ?>" method="get">
-    <label for="category">Categoria:</label>
-    <select id="category" name="category">
+    <label for="tipo_post_id">Categoria:</label>
+    <select id="tipo_post_id" name="tipo_post_id">
         <option value="all" <?= $selectedCategory === 'all' ? 'selected' : '' ?>>Todos</option>
-        <option value="Cachorro" <?= $selectedCategory === 'Cachorro' ? 'selected' : '' ?>>Cachorro</option>
-        <option value="Gato" <?= $selectedCategory === 'Gato' ? 'selected' : '' ?>>Gato</option>
-        <option value="Pássaros" <?= $selectedCategory === 'Pássaros' ? 'selected' : '' ?>>Pássaros</option>
-        <option value="Peixes" <?= $selectedCategory === 'Peixes' ? 'selected' : '' ?>>Peixes</option>
-        <option value="Diversos" <?= $selectedCategory === 'Diversos' ? 'selected' : '' ?>>Diversos</option>
+        <?php
+        $categorias = [
+            1 => 'Cachorro',
+            2 => 'Gato',
+            3 => 'Pássaros',
+            4 => 'Peixes',
+            5 => 'Diversos',
+        ];
+
+        foreach ($categorias as $id => $categoria) {
+            echo "<option value='$id' " . ($selectedCategory == $id ? 'selected' : '') . ">$categoria</option>";
+        }
+        ?>
     </select>
     <button type="submit">Filtrar</button>
 </form>
+
+
+<div class="post-list">
+    <?php foreach ($posts as $post) : ?>
+        <div class="post">
+            <h2><?= $post['title']; ?></h2> <!-- Usar $post['title'] em vez de $post->title -->
+            <p><?= substr($post['content'], 0, 50); ?>...</p> <!-- Usar $post['content'] em vez de $post->content -->
+            <a href="<?= site_url('blog/viewpost/' . $post['id']); ?>">Leia mais</a>
+        </div>
+    <?php endforeach; ?>
 </div>
 
-
-    <div class="post-list">
-        <?php foreach ($posts as $post) : ?>
-            <div class="post">
-                <h2><?= $post['title']; ?></h2>
-                <p><?= substr($post['content'], 0, 50); ?>...</p>
-                <a href="<?= site_url('blog/viewpost/' . $post['id']); ?>">Leia mais</a>
-            </div>
-        <?php endforeach; ?>
-    </div>
 </body>
 
 </html>

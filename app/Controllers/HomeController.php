@@ -3,28 +3,25 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\PostModel;
 
 class HomeController extends Controller
 {
- // No controlador HomeController
- public function index()
- {
-     // Carregue o modelo PostModel
-     $postModel = new \App\Models\PostModel();
- 
-     // Lógica para buscar as postagens no banco de dados
-     $data['posts'] = $postModel->getAllPosts(); // Substitua 'getAllPosts' pelo seu método real.
- 
-     return view('index', $data);
- }
-
-    public function viewPost($post_id)
+    public function index()
     {
-        // Lógica para buscar os detalhes de uma postagem específica no banco de dados
-        $data = []; // Aqui você coloca os dados da postagem
+        $postModel = new PostModel();
 
-        return view('home/viewpost', $data);
+        // Verifique se uma categoria foi filtrada
+        $selectedCategory = $this->request->getGet('category');
+
+        if ($selectedCategory && $selectedCategory !== 'all') {
+            $data['posts'] = $postModel->findByCategory($selectedCategory);
+        } else {
+            $data['posts'] = $postModel->findAll();
+        }
+
+        $data['selectedCategory'] = $selectedCategory;
+
+        return view('index', $data);
     }
 }
-
-?>

@@ -4,14 +4,15 @@ namespace App\Services;
 
 use App\Entities\Comment;
 use App\Models\CommentModel;
-
+use App\Models\UserModel;
 class CommentService
 {
     protected $commentModel;
-
+    protected $userModel;
     public function __construct()
     {
         $this->commentModel = new CommentModel();
+        $this->userModel = new UserModel();
     }
 
     public function createComment($comment)

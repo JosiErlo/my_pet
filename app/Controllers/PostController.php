@@ -8,41 +8,48 @@ use CodeIgniter\Controller;
 
 class PostController extends BaseController
 {
+    public function index()
+    {
+        // Lógica para exibir a página de criação de posts
+        return view('createpost');
+    }
+
     public function createPost()
     {
-        // Coletar dados do formulário
-        $title = $this->request->getPost('title');
-        $content = $this->request->getPost('content');
-        $tipo_post_id = $this->request->getPost('tipo_post_id');
-debug($this->request->getPost());
-        // Validar os dados usando as ferramentas de validação do CodeIgniter
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'title' => 'required|min_length[5]',
-            'content' => 'required|min_length[10]',
-            'tipo_post_id' => 'required',
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            // Se a validação falhar, redirecione de volta ao formulário de criação com mensagens de erro
-            return redirect()->to('/createpost')->withInput()->with('errors', $validation->getErrors());
+        if ($this->request->getMethod() === 'post') {
+            // Recupere os dados do formulário
+            $title = $this->request->getPost('title');
+            $content = $this->request->getPost('content');
+            $categoria = $this->request->getPost('categoria');
+    
+            // Validar o campo 'title'
+            if (empty($title)) {
+                return redirect()->to('createpost')->withInput()->with('error', 'O campo de título não pode estar vazio.');
+            }
+    
+            // Verificar se a categoria existe
+            $categoriaModel = new CategoriaModel(); // Certifique-se de que a classe CategoriaModel está definida corretamente
+            $categoriaId = $categoriaModel->getCategoryId($categoria);
+    
+            // Se a categoria não existe, crie-a
+            if (!$categoriaId) {
+                $categoriaId = $categoriaModel->createCategory(['nome' => $categoria]);
+            }
+    
+            // Crie uma instância do modelo PostModel
+            $postModel = new PostModel();
+    
+            // Faça a lógica de inserção no banco de dados usando o modelo PostModel
+            $data = [
+                'title' => $title,
+                'content' => $content,
+                'tipo_post_id' => $categoriaId,
+            ];
+            $postModel->createPost($data);
+    
+            return redirect()->to('/blog')->with('success', 'Postagem criada com sucesso.');
         }
-
-        // Criar a postagem associando-a à categoria correta
-        $postModel = new PostModel();
-        $postData = [
-            'title' => $title,
-            'content' => $content,
-            'tipo_post_id' => $tipo_post_id,
-        ];
-
-        // Chame o método createPost do modelo
-        if ($postModel->createPost($postData)) {
-            // Post criado com sucesso, redirecione para a página de blog ou para onde desejar
-            return redirect()->to('/blog');
-        } else {
-            // Lidar com erros, se a criação do post falhar
-            // Você pode redirecionar de volta ao formulário de criação com mensagens de erro, por exemplo
-        }
+    
+        return view('createpost');
     }
-}
+}    

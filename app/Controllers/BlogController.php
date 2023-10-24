@@ -20,18 +20,18 @@ class BlogController extends Controller
     public function index()
     {
         $category = $this->request->getGet('category'); // Obtém a categoria da consulta GET
-
+    
         if ($category && $category !== 'all') {
             $posts = $this->postModel->findByCategory($category);
         } else {
             $posts = $this->postModel->findAll();
         }
-
+    
         $data = [
             'posts' => $posts,
             'selectedCategory' => $category,
         ];
-
+    
         return view('blog', $data);
     }
 
@@ -58,9 +58,12 @@ class BlogController extends Controller
 
     public function showCreatePostForm()
     {
-        $data['categories'] = $this->postModel->getAllCategories();
+        // Recupere todas as categorias diretamente
+        $data['categories'] = $this->postModel->distinct('tipo_post_id')->findAll();
+    
         return view('createpost', $data);
     }
+    
 
     public function view($postID)
     {

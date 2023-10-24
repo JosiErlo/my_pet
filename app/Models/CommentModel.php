@@ -13,3 +13,4 @@ class CommentModel extends Model
     protected $returnType = Comment::class;
 
 }
+

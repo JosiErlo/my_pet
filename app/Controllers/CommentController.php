@@ -16,31 +16,34 @@ class CommentController extends Controller
     {
         $this->commentService = new CommentService();
         $this->userModel = new UserModel();
+        $this->commentModel = new CommentModel();
     }
 
     public function addComment()
-    {
+{
+    $validation = \Config\Services::validation();
 
-        $validation = \Config\Services::validation();
-
-        $validation->setRules([
-            'content' => 'required'
-        ]);
-
-        if ($this->commentService->createComment($this->request->getPost())) {
-            session()->setFlashdata('success', 'Comentário gravado com sucesso');
-            return redirect()->back();
-        } else {
-            return redirect()->back();
-        }
+    $validation->setRules([
+        'content' => 'required'
+    ]);
+// debug ($this->request->getPost());
+    if ($this->commentService->createComment($this->request->getPost())) {
+        session()->setFlashdata('success', 'Comentário gravado com sucesso');
+        return redirect()->back();
+    } else {
+        return redirect()->back();
     }
+}
 
-    public function viewComments($postId)
-    {
-        // Recupere os comentários associados a uma postagem específica
-        $comments = $this->commentModel->where('post_id', $postId)->findAll();
+public function viewComments($postId)
+{
+    // Recupere os comentários associados a uma postagem específica
+    $comments = $this->commentModel->where('post_id', $postId)->findAll();
 
-        // Carregue a visualização com os comentários
-        return view('/viewpost', ['content' => $comments]);
-    }
+    // Recupere a postagem específica
+    $post = $this->postModel->find($postId);
+
+    // Carregue a visualização com os comentários e a postagem
+    return view('/viewpost', ['comments' => $comments, 'post' => $post]);
+}
 }

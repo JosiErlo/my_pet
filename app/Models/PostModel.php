@@ -8,48 +8,18 @@ class PostModel extends Model
 {
     protected $table = 'posts';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['title', 'content', 'tipo_post_id'];
-
-    public function getAllPosts()
+    protected $allowedFields = ['title','content','tipo_post_id'];
+    public function findByCategory($category)
     {
-        return $this->findAll();
-    }
-
-    public function getPostById($id)
-    {
-        return $this->find($id);
-    }
-
-    public function createPost($data)
-    {
-        return $this->insert($data);
-    }
-
-    public function updatePost($id, $data)
-    {
-        return $this->update($id, $data);
-    }
-
-    public function deletePost($id)
-    {
-        return $this->delete($id);
+        return $this->where('tipo_post_id', $category)->findAll();
     }
 
     public function getAllCategories()
     {
-        $query = $this->db->table('categorias')
-            ->select('id, nome') // Selecionar 'id' também para associar corretamente com 'tipo_post_id'
-            ->distinct()
-            ->get();
+        $distinctCategories = $this->distinct('tipo_post_id')->findAll();
 
-        return $query->getResultArray();
-    }
+        $uniqueCategories = array_column($distinctCategories, 'tipo_post_id');
 
-    public function findByCategory($category)
-    {
-        return $this->select('*')
-            ->join('categorias', 'categorias.id = posts.tipo_post_id')
-            ->where('categorias.nome', $category)
-            ->findAll();
+        return $uniqueCategories;
     }
 }
