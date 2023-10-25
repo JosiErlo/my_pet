@@ -122,3 +122,211 @@ body {
   float: left;
  
 }
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin: 80px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin: 50px;
+}
+/* Estilos dos links e imagens das empresas parceiras */
+.parceiro {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Defina um tamanho máximo para a imagem (por exemplo, 300px de largura) */
+.parceiro img {
+    max-width: 300px; /* Defina o tamanho máximo em pixels */
+    height: auto; /* Mantém a proporção original da imagem */
+}
+
+/* Estilos para quando o mouse estiver sobre o link */
+.parceiro:hover {
+    background-color: #ddd;
+}
+.createpost{
+    background-color: #ba9b9b;
+    padding: 50px;
+    margin: 10px;
+    border-radius: 30px;
+
+
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+$primary-bg-color: #F7B1AB;
+$secondary-bg-color: #807182;
+$font-color: rgba(0,0,0,.8);
+$font-family: 'Montserrat',sans-serif;
+$form-border-color: rgba(0,0,0,.1);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    background: #D8AA96;
+    color: $font-color;
+    display: grid;
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 400;
+    height: 100vh;
+    justify-items: center;
+    width: 100vw;
+}
+
+.signup-container {
+    display: grid;
+    grid-template-areas: "left right";
+    max-width: 900px;
+}
+
+.left-container {
+    background: $secondary-bg-color;
+    overflow: hidden;
+    padding: 40px 0 0 0;
+    position: relative;
+    text-align: center;
+    width: 300px;
+}
+
+.left-container h1 {
+    color: $font-color;
+    display: inline-block;
+    font-size: 24px;
+}
+
+.left-container h1 i {
+    background: $primary-bg-color;
+    border-radius: 50%;
+    color: $secondary-bg-color;
+    font-size: 24px;
+    margin-right: 5px;
+    padding: 10px;
+    transform: rotate(-45deg);
+}
+
+.left-container .puppy {
+    bottom: -5px;
+    position: absolute;
+}
+
+.left-container img {
+    filter: sepia(100%);
+    width: 70%;
+}
+
+.right-container {
+    background: lighten($primary-bg-color, 5%);
+    display: grid;
+    grid-template-areas: "." ".";
+    width: 500px;
+}
+
+.right-container h1:nth-of-type(1) {
+    color: $font-color;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.right-container .set {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.right-container input {
+    border: 1px solid $form-border-color;
+    border-radius: 4px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 5px;
+}
+
+.right-container input, .right-container label {
+    color: $font-color;
+}
+
+.right-container header {
+    padding: 40px;
+}
+
+.right-container label, .right-container input, .right-container .pets-photo {
+    width: 176px;
+}
+
+.right-container .pets-photo button {
+    border: none;
+    border-radius: 50%;
+    height: 38px;
+    margin-right: 10px;
+    outline: none;
+    width: 38px;
+}
+
+.right-container .pets-photo button i {
+    color: $font-color;
+    font-size: 16px;
+}
+
+.right-container .pets-weight .radio-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.right-container footer {
+    align-items: center;
+    background: #fff;
+    display: grid;
+    padding: 5px 40px;
+}
+
+.right-container button {
+    border: 1px solid rgba(0,0,0,.2);
+    height: 38px;
+    line-height: 38px;
+    width: 100px;
+    border-radius: 19px;
+    font-family: $font-family;
+}
+
+.right-container #back {
+    background: #fff;
+    transition: .2s all ease-in-out;
+}
+
+.right-container #back:hover {
+    background: #171A2B;
+    color: white;
+}
+
+.right-container #next {
+    background: $secondary-bg-color;
+    border: 1px solid transparent;
+    color: #fff;
+}
+
+.right-container #next:hover {
+    background: #171A2B;
+}

@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<link rel="stylesheet" href="<?= base_url('../../../assets/css/style.css'); ?>">
     <title>Visualizar Postagem</title>
 </head>
 

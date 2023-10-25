@@ -8,8 +8,8 @@
 
 <body>
 <div class="navbar">
-    <a href="#">Blog</a>
-    <a href="#">Parceiros</a>
+    <a href="/blog">Blog</a>
+    <a href="/parceiros">Parceiros</a>
     <a href="#">ONGs</a>
     <a href="/localizador_petshops">Pet Shops</a>
     <a href="/login">Criar post</a>
