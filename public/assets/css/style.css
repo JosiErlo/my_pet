@@ -80,8 +80,9 @@ body {
     display: flex;
     text-align: left;
 }
+
 .video {
-    width: 100%; /* Faz o vídeo ocupar todo o espaço disponível */
+    width: 100%;
     display: block;
     margin: 0;
 }
@@ -99,7 +100,7 @@ body {
 .navbar {
     background-color: #333;
     overflow: hidden;
-    padding: 10 px;
+    padding: 10px;
     border-radius: 16px;
 }
 
@@ -108,9 +109,8 @@ body {
     float: left;
     display: block;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
+    padding: 14px 16px;
 }
 
 /* Altere a cor do link quando o mouse passar por cima */
@@ -118,9 +118,9 @@ body {
     background-color: #b81010;
     color: rgb(24, 37, 158);
 }
-.blog{
-  float: left;
- 
+
+.blog {
+    float: left;
 }
 
 header {
@@ -128,7 +128,6 @@ header {
     color: #fff;
     text-align: center;
     padding: 20px;
-    margin: 80px;
 }
 
 footer {
@@ -136,8 +135,8 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    margin: 50px;
 }
+
 /* Estilos dos links e imagens das empresas parceiras */
 .parceiro {
     display: inline-block;
@@ -157,24 +156,24 @@ footer {
     height: auto; /* Mantém a proporção original da imagem */
 }
 
-/* Estilos para quando o mouse estiver sobre o link */
+/* Estilos para quando o mouse estiver se o link */
 .parceiro:hover {
     background-color: #ddd;
 }
-.createpost{
+
+.createpost {
     background-color: #ba9b9b;
     padding: 50px;
     margin: 10px;
     border-radius: 30px;
-
-
 }
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
 $primary-bg-color: #F7B1AB;
 $secondary-bg-color: #807182;
-$font-color: rgba(0,0,0,.8);
-$font-family: 'Montserrat',sans-serif;
-$form-border-color: rgba(0,0,0,.1);
+$font-color: rgba(0, 0, 0, .8);
+$font-family: 'Montserrat', sans-serif;
+$form-border-color: rgba(0, 0, 0, .1);
 
 * {
     box-sizing: border-box;
@@ -193,6 +192,9 @@ body {
     height: 100vh;
     justify-items: center;
     width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .signup-container {
@@ -263,7 +265,8 @@ body {
     padding-left: 5px;
 }
 
-.right-container input, .right-container label {
+.right-container input,
+.right-container label {
     color: $font-color;
 }
 
@@ -271,7 +274,9 @@ body {
     padding: 40px;
 }
 
-.right-container label, .right-container input, .right-container .pets-photo {
+.right-container label,
+.right-container input,
+.right-container .pets-photo {
     width: 176px;
 }
 
@@ -297,13 +302,13 @@ body {
 
 .right-container footer {
     align-items: center;
-    background: #fff;
+    background: #dfdbdb;
     display: grid;
     padding: 5px 40px;
 }
 
 .right-container button {
-    border: 1px solid rgba(0,0,0,.2);
+    border: 1px solid rgba(238, 234, 234, 0.2);
     height: 38px;
     line-height: 38px;
     width: 100px;
@@ -317,8 +322,8 @@ body {
 }
 
 .right-container #back:hover {
-    background: #171A2B;
-    color: white;
+    background: #cfcfd1;
+    color: rgb(239, 238, 238);
 }
 
 .right-container #next {
@@ -328,5 +333,5 @@ body {
 }
 
 .right-container #next:hover {
-    background: #171A2B;
+    background: #f2f2f3;
 }
