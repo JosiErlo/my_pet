@@ -23,25 +23,19 @@
 
 </html>
 <div class="signup-container">
-    <div class="left-container">
+  
         <h1>
             <i class="fas fa-paw"></i>
   Blog My Pet 
         </h1>
-        <div class="puppy">
+        <div class="cachorroregistro">
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png" alt="Puppy">
         </div>
     </div>
-    <div class="video-container">
-    <video class="video" width="640" height="360" controls>
-        <source src="../../../assets/video/MY_PET_1.mp4" type="video/mp4">
-    </video>
-    <div class="right-container">
+       <div class="right-container">
         <header>
             <h1>Uhull, que bom ter você conosco!</h1>
-          
-          
-        <div class="register">
+                        
         <form method="POST" action="/register">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required><br>
@@ -54,7 +48,7 @@
                
             </div>
                     
-            </div>
+          
                       
             </div>
         </header>
