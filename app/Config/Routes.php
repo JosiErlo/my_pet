@@ -47,3 +47,4 @@ $routes->post('deleteComment/(:num)', 'CommentController::deleteComment/$1', ['a
 
 $routes->get('viewpost/(:num)', 'BlogController::view/$1');
 $routes->post('deleteComment/(:num)', 'CommentController::deleteComment/$1');
+// TESTE
