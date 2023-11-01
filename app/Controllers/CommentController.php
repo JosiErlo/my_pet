@@ -11,6 +11,7 @@ class CommentController extends Controller
 {
     protected $commentService;
     protected $userModel;
+    protected $commentModel;
 
     public function __construct()
     {
@@ -20,30 +21,74 @@ class CommentController extends Controller
     }
 
     public function addComment()
-{
-    $validation = \Config\Services::validation();
+    {
+        $validation = \Config\Services::validation();
 
-    $validation->setRules([
-        'content' => 'required'
-    ]);
-// debug ($this->request->getPost());
-    if ($this->commentService->createComment($this->request->getPost())) {
-        session()->setFlashdata('success', 'Comentário gravado com sucesso');
-        return redirect()->back();
-    } else {
+        $validation->setRules([
+            'content' => 'required'
+        ]);
+
+        if ($this->commentService->createComment($this->request->getPost())) {
+            session()->setFlashdata('success', 'Comentário gravado com sucesso');
+        } else {
+            session()->setFlashdata('error', 'Erro ao gravar o comentário');
+        }
+
         return redirect()->back();
     }
-}
 
-public function viewComments($postId)
-{
-    // Recupere os comentários associados a uma postagem específica
-    $comments = $this->commentModel->where('post_id', $postId)->findAll();
+    public function editComment($commentId)
+    {
+        $comment = $this->commentModel->find($commentId);
+    
+        if (!$comment) {
+            return redirect()->back()->with('error', 'Comentário não encontrado.');
+        }
+    
+    
+    
+        return view('edit_comment', ['comment' => $comment]);
+    }
+    public function updateComment()
+    {
+        $commentId = $this->request->getPost('comment_id');
+        $newContent = $this->request->getPost('new_content');
 
-    // Recupere a postagem específica
-    $post = $this->postModel->find($postId);
+        if (!$commentId || !$newContent) {
+            return redirect()->back()->with('error', 'Dados inválidos para atualização do comentário.');
+        }
 
-    // Carregue a visualização com os comentários e a postagem
-    return view('/viewpost', ['comments' => $comments, 'post' => $post]);
-}
+        $comment = $this->commentModel->find($commentId);
+
+        if (!$comment) {
+            return redirect()->back()->with('error', 'Comentário não encontrado.');
+        }
+
+        // Verifique a autorização para edição (se necessário)
+
+        // Atualize o conteúdo do comentário
+        $comment->content = $newContent;
+        $this->commentModel->save($comment);
+
+        return redirect()->to('/viewpost/' . $comment->post_id)->with('success', 'Comentário atualizado com sucesso.');
+    }
+
+    public function deleteComment($commentId)
+    {
+        $comment = $this->commentModel->find($commentId);
+
+        if (!$comment) {
+            return redirect()->back()->with('error', 'Comentário não encontrado.');
+        }
+
+        // Verifique a autorização para exclusão
+        if ($comment->user_id !== session()->get('user_id')) {
+            return redirect()->back()->with('error', 'Você não tem permissão para excluir este comentário.');
+        }
+
+        // Exclua o comentário
+        $this->commentModel->delete($commentId);
+
+        return redirect()->to('/viewpost/' . $comment->post_id)->with('success', 'Comentário excluído com sucesso.');
+    }
 }
