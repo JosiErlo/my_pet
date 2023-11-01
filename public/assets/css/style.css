@@ -41,7 +41,9 @@ body {
 }
 
 .register input[type="email"],
-.register input[type="password"] {
+.register input[type="password"] 
+.register input[type="nome"]
+.register input[type="date"]{
     border: 1px solid var(--form-border-color); /* Usa a cor da borda definida */
     border-radius: 4px;
     height: 38px;
@@ -178,3 +180,7 @@ footer {
 /* Importação de fonte do Google Fonts (Montserrat) */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
 
+.logo{
+    padding: 10px;
+    margin: 10px;
+}

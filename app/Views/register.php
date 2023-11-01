@@ -24,10 +24,11 @@
 </html>
 <div class="signup-container">
   
-        <h1>
-            <i class="fas fa-paw"></i>
-  Blog My Pet 
-        </h1>
+        <div class="logo">
+        <img src="<?= base_url('../../../assets/img/MyPet.png') ?>" alt="blog">
+            </div>
+  
+
         <div class="cachorroregistro">
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png" alt="Puppy">
         </div>
@@ -37,7 +38,13 @@
             <h1>Uhull, que bom ter você conosco!</h1>
                         
         <form method="POST" action="/register">
-            <label for="email">Email:</label>
+            <label for="nome">Nome completo:</label>
+            <input type="nome" id="nome" name="nome" required><br>
+
+            <label for="birthdate">Data de nascimento:</label>
+            <input type="date" id="birthdate" name="birthdate" required><br>
+
+            <label for="email">E-mail:</label>
             <input type="email" id="email" name="email" required><br>
 
             <label for="senha">Senha:</label>
