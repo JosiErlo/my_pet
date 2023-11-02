@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link rel="stylesheet" href="<?= base_url('../../../assets/css/style.css'); ?>">
 </head>
@@ -37,8 +36,8 @@
         </p>
     </div>
     <form action="<?= site_url('blog') ?>" method="get">
-    <label for="tipo_post_id">Categoria:</label>
-    <select id="tipo_post_id" name="tipo_post_id">
+    <label for="category">Categoria:</label>
+    <select id="category" name="category">
         <option value="all" <?= $selectedCategory === 'all' ? 'selected' : '' ?>>Todos</option>
         <?php
         $categorias = [

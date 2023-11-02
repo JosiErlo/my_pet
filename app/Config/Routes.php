@@ -13,7 +13,7 @@ $routes->post('addComment', 'CommentController::addComment');
 $routes->add('editComment', 'CommentController::editComment', ['as' => 'editComment']);
 $routes->post('blog/viewpost/(:num)', 'BlogController::view/$1');
 $routes->add('deleteComment/(:num)', 'CommentController::deleteComment/$1');
-
+$routes->get('esqueceusenha', 'AuthController::showForgotPasswordForm');
 $routes->post('updateComment', 'CommentController::updateComment');
 
 $routes->get('editComment/(:num)', 'CommentController::editComment/$1');
