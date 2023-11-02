@@ -169,5 +169,23 @@ class AuthController extends Controller
         // Pode ser uma boa prática exibir uma mensagem de erro ou redirecionar para a página de blog.
     }
 }
+public function showForgotPasswordForm()
+{
+    return view('esqueceusenha');
 
+}
+public function sendPasswordResetLink()
+{
+    // Obtenha o email do formulário
+    $email = $this->request->getPost('email');
+
+    // Gere um token de redefinição de senha aleatório
+    $resetToken = bin2hex(random_bytes(32));
+
+    // Atualize o banco de dados para armazenar o token associado ao email do usuário
+    // Este é um exemplo simplificado, você precisará adaptá-lo ao seu banco de dados e modelo de usuário
+
+    // Redirecione para uma página de confirmação
+    return view('password_reset_sent');
+}
 }

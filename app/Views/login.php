@@ -20,10 +20,14 @@
                 <label for="password">Senha:</label>
                 <input type="password" name="password" id="password" required>
                 <br>
+                <a href="<?= site_url('esqueceusenha') ?>">Esqueceu a senha?</a>
+
                 <button type="submit">Entrar</button></div>
+              
             </form>
             <!-- Link para a página de registro -->
             <p>Não tem uma conta? <a href="<?= site_url('register'); ?>">Registre-se</a></p>
+            <a href="<?= site_url('index.php'); ?>">Voltar para o blog</a>
         <?php endif; ?>
     
 </body>

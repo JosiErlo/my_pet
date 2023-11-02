@@ -30,6 +30,7 @@
                     <option value="5">Diversos</option>
                 </select>
             </div>
+            <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
             <div>
                 <button type="submit">Criar Postagem</button>
             </div>

@@ -54,6 +54,7 @@
     <a href="https://www.google.com" class="parceiro" target="_blank">
         <img src="<?= base_url('assets/img/onca.webp') ?>" alt="Clinic Vet">
     </a>
+    <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 </div>
 <footer>
     <p>&copy; <?php echo date("Y"); ?> Blog XYZ. Todos os direitos reservados.</p>
