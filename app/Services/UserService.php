@@ -4,14 +4,17 @@ namespace App\Services;
 
 use App\Entities\User;
 use App\Models\UserModel;
+use CodeIgniter\HTTP\Request;
 
 class UserService
 {
     protected $userModel;
+    protected $request;
 
     public function __construct(UserModel $userModel)
     {
         $this->userModel = $userModel;
+        $this->request = service('request');
     }
 
     public function authenticate($email, $password)
@@ -34,7 +37,10 @@ class UserService
         $user->email = $userArray['email'];
         $user->password = password_hash($userArray['password'], PASSWORD_BCRYPT);
         $user->birthdate = $userArray['birthdate'];
+        $user->mother_name = $userArray['mother_name'];
 
+        $postData = $this->request->getPost();
+        var_dump($postData);
         if ($this->userModel->save($user)) {
             return true;
         } else {

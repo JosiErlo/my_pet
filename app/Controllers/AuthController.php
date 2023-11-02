@@ -81,7 +81,15 @@ class AuthController extends Controller
     {
         $postData = $this->request->getPost();
     
-        if ($this->userService->createUser($postData)) {
+        $userData = [
+            'email' => $postData['email'],
+            'password' => password_hash($postData['password'], PASSWORD_BCRYPT),
+            'birthdate' => $postData['birthdate'],
+            'mother_name' => $postData['mother_name'],
+        ];
+    
+        // Se o usuário for criado com sucesso, redirecione ou faça o que for necessário
+        if ($this->userService->createUser($userData)) {
             return redirect('/');
         }
     
@@ -177,18 +185,35 @@ class AuthController extends Controller
     {
         return view('esqueceusenha');
     }
-    public function sendPasswordResetLink()
+
+    public function resetPassword()
     {
-        // Obtenha o email do formulário
         $email = $this->request->getPost('email');
+        $newPassword = $this->request->getPost('password');
+        $birthdate = $this->request->getPost('birthdate');
+        $motherName = $this->request->getPost('mother_name');
 
-        // Gere um token de redefinição de senha aleatório
-        $resetToken = bin2hex(random_bytes(32));
+        $passwordResetModel = new \App\Models\PasswordResetModel();
+        $user = $passwordResetModel->where('email', $email)->first();
 
-        // Atualize o banco de dados para armazenar o token associado ao email do usuário
-        // Este é um exemplo simplificado, você precisará adaptá-lo ao seu banco de dados e modelo de usuário
+        if (!$user) {
+            // Usuário não encontrado, trate o erro
+        } elseif ($user['birthdate'] !== $birthdate || $user['mother_name'] !== $motherName) {
+            // A data de aniversário ou o nome da mãe não correspondem, trate o erro
+        } else {
+            // Os dados estão corretos, atualize a senha
+            $userData = [
+                'password' => password_hash($newPassword, PASSWORD_BCRYPT),
+            ];
 
-        // Redirecione para uma página de confirmação
-        return view('password_reset_sent');
+            $userModel = new \App\Models\UserModel();
+            $userModel->update($user['user_id'], $userData);
+
+            // Remova o registro de redefinição de senha após a conclusão
+            $passwordResetModel->delete($user['id']);
+
+            // Redirecione o usuário após a redefinição da senha
+            // Você pode redirecionar para a página de login ou onde desejar
+        }
     }
 }
