@@ -43,8 +43,8 @@
         $categorias = [
             1 => 'Cachorro',
             2 => 'Gato',
-            3 => 'Pássaros',
-            4 => 'Peixes',
+            3 => 'Peixes',
+            4 => 'Pássaros',
             5 => 'Diversos',
         ];
 
