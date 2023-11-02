@@ -34,24 +34,30 @@ class AuthController extends Controller
 
     public function authenticate()
     {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        if ($this->request->getMethod() === 'post') {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
 
-        if ($userFind = $this->userService->authenticate($email, $password)) {
+            if ($userFind = $this->userService->authenticate($email, $password)) {
 
-            $arrauUser = array(
-                'user_id' => $userFind->id,
-                'email' => $userFind->email,
-                'loggedin' => true,
-            );
+                $userData = array(
+                    'user_id' => $userFind->id,
+                    'email' => $userFind->email,
+                    'birthdate' => $userFind->birthdate,
+                    'loggedin' => true,
+                );
 
-            session()->set($arrauUser);
-            return redirect()->to('/blog');
-        } else {
-            $data['error'] = 'Usuário ou senha incorretos.';
-            return view('login', $data);
+                session()->set($userData);
+                return redirect()->to('/blog');
+            } else {
+                $data['error'] = 'Usuário ou senha incorretos.';
+                return view('login', $data);
+            }
         }
+
+        return view('login');
     }
+
 
     public function showRegistrationForm()
     {
@@ -74,15 +80,13 @@ class AuthController extends Controller
     public function createUser()
     {
         $postData = $this->request->getPost();
-
+    
         if ($this->userService->createUser($postData)) {
             return redirect('/');
         }
-
-        // Se o método errors() existir na classe UserService
-        // você pode usá-lo para obter os erros
+    
         $data['errors'] = method_exists($this->userService, 'errors') ? $this->userService->errors() : [];
-
+    
         return view('register', $data);
     }
 
@@ -156,36 +160,35 @@ class AuthController extends Controller
         }
     }
     public function viewPost($postId)
-{
-    // Recupere a postagem completa com base no $postId
-    $postModel = new \App\Models\PostModel(); // Substitua com a lógica real
-    $post = $postModel->getPostById($postId);
+    {
+        // Recupere a postagem completa com base no $postId
+        $postModel = new \App\Models\PostModel(); // Substitua com a lógica real
+        $post = $postModel->getPostById($postId);
 
-    if ($post) {
-        // Carregue a visualização com os dados da postagem completa
-        return view('viewpost', ['post' => $post]);
-    } else {
-        // Trate o caso em que a postagem não foi encontrada
-        // Pode ser uma boa prática exibir uma mensagem de erro ou redirecionar para a página de blog.
+        if ($post) {
+            // Carregue a visualização com os dados da postagem completa
+            return view('viewpost', ['post' => $post]);
+        } else {
+            // Trate o caso em que a postagem não foi encontrada
+            // Pode ser uma boa prática exibir uma mensagem de erro ou redirecionar para a página de blog.
+        }
     }
-}
-public function showForgotPasswordForm()
-{
-    return view('esqueceusenha');
+    public function showForgotPasswordForm()
+    {
+        return view('esqueceusenha');
+    }
+    public function sendPasswordResetLink()
+    {
+        // Obtenha o email do formulário
+        $email = $this->request->getPost('email');
 
-}
-public function sendPasswordResetLink()
-{
-    // Obtenha o email do formulário
-    $email = $this->request->getPost('email');
+        // Gere um token de redefinição de senha aleatório
+        $resetToken = bin2hex(random_bytes(32));
 
-    // Gere um token de redefinição de senha aleatório
-    $resetToken = bin2hex(random_bytes(32));
+        // Atualize o banco de dados para armazenar o token associado ao email do usuário
+        // Este é um exemplo simplificado, você precisará adaptá-lo ao seu banco de dados e modelo de usuário
 
-    // Atualize o banco de dados para armazenar o token associado ao email do usuário
-    // Este é um exemplo simplificado, você precisará adaptá-lo ao seu banco de dados e modelo de usuário
-
-    // Redirecione para uma página de confirmação
-    return view('password_reset_sent');
-}
+        // Redirecione para uma página de confirmação
+        return view('password_reset_sent');
+    }
 }

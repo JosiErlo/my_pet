@@ -38,20 +38,24 @@
         <header>
             <h1>Uhull, que bom ter você conosco!</h1>
                         
-        <form method="POST" action="/register">
-            <label for="nome">Nome completo:</label>
-            <input type="nome" id="nome" name="nome" required><br>
+            <form method="POST" action="/register">
+    <label for="nome">Nome completo:</label>
+    <input type="text" id="nome" name="nome" required><br>
 
-            <label for="birthdate">Data de nascimento:</label>
-            <input type="date" id="birthdate" name="birthdate" required><br>
+    <label for="birthdate">Data de nascimento:</label>
+    <input type="date" id="birthdate" name="birthdate" required><br>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required><br>
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required><br>
 
-            <label for="senha">Senha:</label>
-            <input type="password" id="password" name="password" required><br>
-            <input type="submit" value="Registrar">
-        </form>
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <label for="confirm_password">Confirmar Senha:</label>
+    <input type="password" id="confirm_password" name="confirm_password" required><br>
+
+    <input type="submit" value="Registrar">
+</form>
                 </div>
                
             </div>

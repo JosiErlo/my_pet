@@ -32,7 +32,8 @@ class UserService
 
       
         $user->email = $userArray['email'];
-        $user->password = password_hash($userArray['password'], PASSWORD_BCRYPT); // Hash da senha
+        $user->password = password_hash($userArray['password'], PASSWORD_BCRYPT);
+        $user->birthdate = $userArray['birthdate'];
 
         if ($this->userModel->save($user)) {
             return true;

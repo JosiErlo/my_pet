@@ -23,6 +23,10 @@ class CreateUsersTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'birthdate' => [
+                'type' => 'DATE',
+                
+            ],
             'created_at' => [
                 'type' => 'datetime',
             ],
@@ -30,10 +34,11 @@ class CreateUsersTable extends Migration
                 'type' => 'datetime',
             ],
         ]);
-
+    
         $this->forge->addKey('id', true);
         $this->forge->createTable('users');
     }
+    
 
     public function down()
     {
