@@ -25,14 +25,15 @@
 <div class="signup-container">
   
         <div class="logo">
-        <img src="<?= base_url('../../../assets/img/MyPet.png') ?>" alt="blog">
+        <img src="<?= base_url('../../../assets/img/logo.png') ?>" alt="blog">
             </div>
   
-
         <div class="cachorroregistro">
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png" alt="Puppy">
         </div>
     </div>
+
+    <div>
        <div class="right-container">
         <header>
             <h1>Uhull, que bom ter você conosco!</h1>
@@ -54,8 +55,6 @@
                 </div>
                
             </div>
-                    
-          
                       
             </div>
         </header>

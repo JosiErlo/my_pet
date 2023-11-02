@@ -33,6 +33,8 @@ body {
 /* Estilos para o formulário */
 .register form {
     text-align: center;
+    right: 300px;
+    align-items: center;
 }
 
 .register label {
@@ -181,6 +183,41 @@ footer {
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
 
 .logo{
-    padding: 10px;
-    margin: 10px;
+    padding: 5px;
+    margin:5px;
+    width: -5px; /*largura desejada */
+    height: -5px;
+    position: absolute;
+    left: 200px;
+top: 0;
+   background-attachment: fixed;
+  
 }
+
+.signup-container{
+    display:grid;
+    grid-template-areas: 'left right';
+    max-width: 900px;
+}
+
+.left-container {
+    background: var(--primeira-cor);
+}
+
+.right-container{
+background: lighten(var(--primary-bg-color), 5%);
+display: grid;
+grid-template-areas: "." ".";
+width: 500px;
+}
+
+.cachorroregistro{
+    align-items: center;
+    display: grid;
+    grid-template-areas: ". .";
+    position: absolute;
+    left: 0;
+bottom: 0;
+   background-attachment: fixed;
+}
+
