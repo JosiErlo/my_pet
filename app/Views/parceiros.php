@@ -22,7 +22,7 @@
     </header>
    
 </head>
-<div class="parceiro-container">
+<!-- <div class="parceiro-container">
     <a href="https://www.youtube.com" class="parceiro" target="_blank">
         <img src="<?= base_url('assets/img/saudeanimal.jpeg') ?>" alt="Saúde Animal">
     </a>
@@ -53,8 +53,72 @@
 
     <a href="https://www.google.com" class="parceiro" target="_blank">
         <img src="<?= base_url('assets/img/onca.webp') ?>" alt="Clinic Vet">
-    </a>
-    <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
+    </a> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodeAtNow | Animated Responsive Card</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+
+<body>
+    <div class="container">
+        <div class="card" style="--clr: #009688">
+            <div class="img-box">
+                <img src=<?base_url('assets/img/onca.webp')?> alt="Clinic Vet">
+            </div>
+            <div class="content">
+                <h2>Leafs</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Architecto, hic? Magnam eum error saepe doloribus corrupti
+                    repellat quisquam alias doloremque!
+                </p>
+                <a href="">Read More</a>
+            </div>
+        </div>
+        <div class="card" style="--clr: #FF3E7F">
+            <div class="img-box">
+                <img src=<?= base_url('assets/img/cachorro1.jpg') ?> alt="Clinic Vet">
+            </div>
+            <div class="content">
+                <h2>Fruits</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Architecto, hic? Magnam eum error saepe doloribus corrupti
+                    repellat quisquam alias doloremque!
+                </p>
+                <a href="">Read More</a>
+            </div>
+        </div>
+        <div class="card" style="--clr: #03A9F4">
+            <div class="img-box">
+                <img src=<?= base_url('assets/img/logoclinicvet.jpg') ?> alt="Clinic Vet">
+            </div>
+            <div class="content">
+                <h2>Flowers</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Architecto, hic? Magnam eum error saepe doloribus corrupti
+                    repellat quisquam alias doloremque!
+                </p>
+                <a href="">Read More</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</body>
+
+</html>
+
+<a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 </div>
 <footer>
     <p>&copy; <?php echo date("Y"); ?> Blog XYZ. Todos os direitos reservados.</p>
