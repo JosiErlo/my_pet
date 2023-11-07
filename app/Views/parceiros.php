@@ -7,22 +7,15 @@
     <br>
     <br>
     <div class="navbar">
-            <a href="/blog">Blog</a>
-            <a href="/parceiros">Parceiros</a>
-            <a href="#">ONGs</a>
-            <a href="/localizador_petshops">Pet Shops</a>
-            <a href="/login">Criar post</a>
-            <a href="/login">Entrar</a>
-        </div>
-    <header>
-        
-        
-        <h1>Nossos Parceiros</h1>
-     
-    </header>
+        <a href="/blog">Blog</a>
+        <a href="/parceiros">Parceiros</a>
+        <a href="#">ONGs</a>
+        <a href="/localizador_petshops">Pet Shops</a>
+        <a href="/login">Criar post</a>
+        <a href="/login">Entrar</a>
+    </div>
    
-</head>
-<!-- <div class="parceiro-container">
+        <!-- <div class="parceiro-container">
     <a href="https://www.youtube.com" class="parceiro" target="_blank">
         <img src="<?= base_url('assets/img/saudeanimal.jpeg') ?>" alt="Saúde Animal">
     </a>
@@ -57,21 +50,14 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodeAtNow | Animated Responsive Card</title>
-  <link rel="stylesheet" href="./style.css">
 
-</head>
-<body>
 
-<body>
-    <div class="container">
+
+<body id="pagina">
+    <div class="grupo">
         <div class="card" style="--clr: #009688">
             <div class="img-box">
-                <img src=<?base_url('assets/img/onca.webp')?> alt="Clinic Vet">
+                <img src=<? base_url('assets/img/onca.webp') ?> alt="Clinic Vet">
             </div>
             <div class="content">
                 <h2>Leafs</h2>
@@ -114,14 +100,16 @@
     </div>
 </body>
 
-</body>
+
 
 </html>
 
 <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 </div>
 <footer>
-    <p>&copy; <?php echo date("Y"); ?> Blog XYZ. Todos os direitos reservados.</p>
+    <p>&copy;
+        <?php echo date("Y"); ?> Blog XYZ. Todos os direitos reservados.
+    </p>
 </footer>
 </body>
 

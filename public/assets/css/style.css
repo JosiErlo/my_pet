@@ -22,6 +22,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    margin-top: 50px;
 }
 
 /* Estilos para o container */
@@ -103,18 +104,23 @@ body {
     font-size: smaller;
 }
 
-/* Estilos para a barra de navegação */
+/*/* Estilos para a barra de navegação */
 .navbar {
     background-color: #333;
     overflow: hidden;
     padding: 10px;
-    border-radius: 16px;
+    border-radius: 0; /* Remova a borda arredondada */
+    position: fixed; /* Fixa a barra de navegação no topo */
+    top: 0; /* Coloca a barra de navegação no topo da página */
+    left: 0; /* Coloca a barra de navegação no lado esquerdo da página */
+    width: 100%; /* Faz a barra de navegação ocupar toda a largura */
+    z-index: 999; /* Garante que a barra de navegação esteja acima de outros elementos */
+    text-align: right;
 }
 
 /* Estilize os links da nave */
 .navbar a {
-    float: left;
-    display: block;
+    display: inline-block; /* Coloca os links em linha */
     color: white;
     text-decoration: none;
     padding: 14px 16px;
@@ -145,6 +151,9 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
+    position: absolute;
+    bottom: 0; /* Define o rodapé na parte inferior da janela */
+    width: 100%; /* Faz o rodapé ocupar toda a largura da página */
 }
 
 /* Estilos para os links e imagens das empresas parceiras */
@@ -234,14 +243,14 @@ bottom: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+#pagina {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-.container {
+.grupo {
     position: relative;
     display: flex;
     justify-content: right;
@@ -252,7 +261,7 @@ body {
     
 }
 
-.container .card {
+.grupo .card {
     position: relative;
     display: flex;
     justify-content: center;
@@ -266,12 +275,12 @@ body {
     box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
 }
 
-.container .card:hover {
+.grupo .card:hover {
     height: 400px;
     cursor: pointer;
 }
 
-.container .card .img-box {
+.grupo .card .img-box {
     position: absolute;
     top: 20px;
     width: 300px;
@@ -282,13 +291,13 @@ body {
     transition: 0.5s;
 }
 
-.container .card:hover .img-box {
+.grupo .card:hover .img-box {
     top: -100px;
     scale: 0.75;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
 }
 
-.container .card .img-box img {
+.grupo .card .img-box img {
     position: absolute;
     top: 0;
     left: 0;
@@ -297,7 +306,7 @@ body {
     object-fit: cover;
 }
 
-.container .card .content {
+.grupo .card .content {
     position: absolute;
     top: 252px;
     width: 100%;
@@ -308,22 +317,22 @@ body {
     transition: 0.5s;
 }
 
-.container .card:hover .content {
+.grupo .card:hover .content {
     top: 130px;
     height: 250px;
 }
 
-.container .card .content h2 {
+.grupo .card .content h2 {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--clr);
 }
 
-.container .card .content p {
+.grupo .card .content p {
     color: #333;
 }
 
-.container .card .content a {
+.grupo .card .content a {
     position: relative;
     top: 15px;
     display: inline-block;
@@ -334,26 +343,26 @@ body {
     font-weight: 500;
 }
 
-.container .card .content a:hover {
+.grupo .card .content a:hover {
     opacity: 0.8;
 }
 
 @media (max-width: 480px) {
-    .container .card {
+    .grupo .card {
         width: 230px;
         border-radius: 15px;
     }
 
-    .container .card .img-box {
+    .grupo .card .img-box {
         width: 185px;
         border-radius: 10px;
     }
 
-    .container .card .content p {
+    .grupo .card .content p {
         font-size: 0.8rem;
     }
 
-    .container .card .content a {
+    .grupo .card .content a {
         font-size: 0.9rem;
     }
 
