@@ -13,11 +13,8 @@
         <label for="mother_name">Nome da Mãe:</label>
         <input type="text" name="mother_name" id="mother_name" required><br><br>
         <label for="password">Nova Senha:</label>
-        <input type="password" name="password" id="password" required><br><br>
+        <input type="password" name="new_password" id="new_password" required><br><br>
         <button type="submit">Salvar Nova Senha</button>
     </form>
-
-    <!-- Adicione um link para o CRUD de usuário após o envio bem-sucedido -->
-    <p>Deseja alterar seu usuário?<a href="<?= site_url('user.php') ?>"><br>Clique aqui!</a>.</p>
 </body>
 </html>

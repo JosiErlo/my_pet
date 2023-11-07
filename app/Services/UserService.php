@@ -33,7 +33,7 @@ class UserService
     {
         $user = new User();
 
-      
+
         $user->email = $userArray['email'];
         $user->password = password_hash($userArray['password'], PASSWORD_BCRYPT);
         $user->birthdate = $userArray['birthdate'];
@@ -58,11 +58,10 @@ class UserService
     }
 
     // Novo método para buscar um usuário pelo email
+
     public function getUserByEmail($email)
     {
-        $user = $this->userModel->select('password')->where('email', $email)->first();
-
-        return $user ? $user->password : null;
+        return $this->userModel->where('email', $email)->first();
     }
+
 }
-// teste

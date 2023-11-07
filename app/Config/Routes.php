@@ -42,11 +42,15 @@ $routes->get('deleteComment/(:num)', 'CommentController::deleteComment/$1');
 
 $routes->get('viewpost/(:num)', 'BlogController::view/$1');
 $routes->post('deleteComment/(:num)', 'CommentController::deleteComment/$1');
+$routes->post('updatePassword', 'AuthController::updatePassword');
+$routes->post('auth/updatePassword', 'AuthController::updatePassword');
 
 $routes->get('esqueceusenha', 'AuthController::showForgotPasswordForm');
 $routes->post('esqueceusenha', 'AuthController::resetPassword');
+$routes->add('esqueceusenha', 'AuthController::updatePassword');
+$routes->post('esqueceusenha', 'AuthController::updatePassword');
+$routes->post('updatePassword', 'AuthController::updatePassword');
 
-$routes->post('auth/updatePassword', 'AuthController::resetPassword');
-$routes->post('auth/updatePassword', 'AuthController::updatePassword');
+
 $routes->get('user', 'UserController::showUserPage');
 

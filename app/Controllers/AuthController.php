@@ -1,19 +1,20 @@
 <?php
-
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-use App\Services\UserService;
+use App\Models\UserModel;
 
 class AuthController extends Controller
 {
     protected $userService;
-
+        protected $userModel; // Adicione esta propriedade
     public function __construct()
     {
         // Obtenha as dependências usando o Service Container
         $this->userService = service('userService');
+        $this->userModel = new UserModel(); // Injete o UserModel no construtor
     }
+   
 
     public function index()
     {
@@ -58,7 +59,6 @@ class AuthController extends Controller
         return view('login');
     }
 
-
     public function showRegistrationForm()
     {
         // Página de registro
@@ -80,21 +80,21 @@ class AuthController extends Controller
     public function createUser()
     {
         $postData = $this->request->getPost();
-    
+
         $userData = [
             'email' => $postData['email'],
             'password' => password_hash($postData['password'], PASSWORD_BCRYPT),
             'birthdate' => $postData['birthdate'],
             'mother_name' => $postData['mother_name'],
         ];
-    
+
         // Se o usuário for criado com sucesso, redirecione ou faça o que for necessário
         if ($this->userService->createUser($userData)) {
             return redirect('/');
         }
-    
-        $data['errors'] = method_exists($this->userService, 'errors') ? $this->userService->errors() : [];
-    
+
+        $data['errors'] = method_exists($this->userService, 'getErrors') ? $this->userService->getErrors() : [];
+
         return view('register', $data);
     }
 
@@ -109,7 +109,7 @@ class AuthController extends Controller
         // Verifique se o usuário está autenticado
         if (session()->get('loggedin')) {
             // Recupere o email da sessão
-            $userEmail = session()->get('user_email');
+            $userEmail = session()->get('email');
 
             // Exiba a mensagem de boas-vindas com o email do usuário
             return 'Bem-vindo, ' . $userEmail;
@@ -124,7 +124,7 @@ class AuthController extends Controller
         // Coletar dados do formulário
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
-        $category = $this->request->getPost('categoria');
+        $category = $this->request->getPost('category');
 
         // Adicione a data/hora atual ao campo 'created_at'
         $created_at = date('Y-m-d H:i:s');
@@ -134,7 +134,7 @@ class AuthController extends Controller
         $validation->setRules([
             'title' => 'required|min_length[5]',
             'content' => 'required|min_length[10]',
-            'categoria' => 'required',
+            'category' => 'required',
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
@@ -148,7 +148,8 @@ class AuthController extends Controller
             'title' => $title,
             'content' => $content,
             'category' => $category,
-            'created_at' => $created_at, // Adicione a data/hora atual
+            'created_at' => $created_at,
+            // Adicione a data/hora atual
         ];
 
         try {
@@ -167,6 +168,7 @@ class AuthController extends Controller
             // return redirect()->to('/createpost')->withInput()->with('error', 'Ocorreu um erro ao criar o post: ' . $e->getMessage());
         }
     }
+
     public function viewPost($postId)
     {
         // Recupere a postagem completa com base no $postId
@@ -181,39 +183,36 @@ class AuthController extends Controller
             // Pode ser uma boa prática exibir uma mensagem de erro ou redirecionar para a página de blog.
         }
     }
+
     public function showForgotPasswordForm()
     {
         return view('esqueceusenha');
     }
 
-    public function resetPassword()
+    public function updatePassword()
     {
         $email = $this->request->getPost('email');
-        $newPassword = $this->request->getPost('password');
         $birthdate = $this->request->getPost('birthdate');
         $motherName = $this->request->getPost('mother_name');
-
-        $passwordResetModel = new \App\Models\PasswordResetModel();
-        $user = $passwordResetModel->where('email', $email)->first();
-
+        $newPassword = $this->request->getPost('new_password');
+    
+        // Consulte o banco de dados para encontrar o usuário com base no email, data de nascimento e nome da mãe.
+        $userModel = new UserModel();
+        $user = $userModel->where('email', $email)
+            ->where('birthdate', $birthdate)
+            ->where('mother_name', $motherName)
+            ->first();
+    
         if (!$user) {
-            // Usuário não encontrado, trate o erro
-        } elseif ($user['birthdate'] !== $birthdate || $user['mother_name'] !== $motherName) {
-            // A data de aniversário ou o nome da mãe não correspondem, trate o erro
-        } else {
-            // Os dados estão corretos, atualize a senha
-            $userData = [
-                'password' => password_hash($newPassword, PASSWORD_BCRYPT),
-            ];
-
-            $userModel = new \App\Models\UserModel();
-            $userModel->update($user['user_id'], $userData);
-
-            // Remova o registro de redefinição de senha após a conclusão
-            $passwordResetModel->delete($user['id']);
-
-            // Redirecione o usuário após a redefinição da senha
-            // Você pode redirecionar para a página de login ou onde desejar
+            return redirect()->to('/auth/showForgotPasswordForm')->with('error', 'Informações incorretas. Tente novamente.');
         }
+    
+        // Atualize a senha do usuário
+        $user->password = password_hash($newPassword, PASSWORD_BCRYPT);
+        $userModel->save($user);
+    
+        return redirect()->to('login')->with('success', 'Senha atualizada com sucesso. Faça o login com sua nova senha.');
     }
-}
+    
+    
+}    

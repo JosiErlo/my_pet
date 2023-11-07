@@ -9,7 +9,7 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['email', 'password', 'birthdate', 'mother_name']; // Adicione 'mother_name' aqui
+    protected $allowedFields = ['email', 'password', 'birthdate', 'mother_name'];
     protected $returnType = User::class;
 
     protected $validationRules = [
@@ -24,20 +24,13 @@ class UserModel extends Model
         return $this->errors();
     }
 
-    public function getUser($email)
-    {
-        return $this->where('email', $email)->first();
-    }
-
-    public function createUser($email, $hashedPassword, $birthdate, $motherName)
+    public function updatePassword($userId, $newPassword)
     {
         $data = [
-            'email' => $email,
-            'password' => $hashedPassword,
-            'birthdate' => $birthdate,
-            'mother_name' => $motherName, // Adicione 'mother_name' aqui
+            'password' => $newPassword,
         ];
-
-        return $this->insert($data);
+    
+        return $this->update($userId, $data);
     }
+    
 }
