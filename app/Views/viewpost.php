@@ -10,6 +10,7 @@
     <h1>Visualizar Postagem</h1>
     <h2><?= $post['title']; ?></h2>
     <p><?= $post['content']; ?></p>
+    <a href="<?= site_url('post/delete/' . $post['id']); ?>">Excluir</a>
     <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 
     <?php if (session()->has('success')) : ?>

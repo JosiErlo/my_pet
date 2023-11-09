@@ -83,6 +83,8 @@
                     <?= substr($post['content'], 0, 50); ?>...
                 </p> <!-- Usar $post['content'] em vez de $post->content -->
                 <a href="<?= site_url('blog/viewpost/' . $post['id']); ?>">Leia mais</a>
+               
+
             </div>
         <?php endforeach; ?>
     </div>

@@ -45,4 +45,14 @@ class PostModel extends Model
    
        return $categories;
    }
+   
+   public function deletePost($postId)
+   {
+       // Tente excluir a postagem pelo ID
+       $this->where('id', $postId)->delete();
+   
+       // Verifique se a exclusão foi bem-sucedida
+       return $this->db->affectedRows() > 0;
+   }
+   
 }

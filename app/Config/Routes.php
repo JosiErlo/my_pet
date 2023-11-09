@@ -15,6 +15,7 @@ $routes->post('updateComment', 'CommentController::updateComment'); // Adicionei
 // Rota para o painel do administrador
 $routes->get('dashboard', 'AdminController::dashboard');
 $routes->get('/', 'HomeController::index'); // Rota da página inicial
+$routes->get('post/delete/(:num)', 'PostController::deletePost/$1');
 
 // Rotas do blog
 $routes->get('blog', 'BlogController::index');
@@ -24,6 +25,7 @@ $routes->get('viewpost2', 'BlogController::view'); // Rota para a visualização
 
 // Rota para definir o idioma
 $routes->get('idioma/(:any)', 'LanguageController::definirIdioma/$1');
+$routes->get('post/delete/(:num)', 'PostController::delete/$1');
 
 // Rota para visualizar comentários
 $routes->get('comment/viewComments/(:num)', 'CommentController::viewComments/$1');
@@ -39,6 +41,8 @@ $routes->get('localizador_petshops', 'PetShopController::localizador');
 
 // Rota para excluir comentários
 $routes->get('deleteComment/(:num)', 'CommentController::deleteComment/$1');
+$routes->add('deletePost/(:num)', 'PostController::deletePost/$1', ['filter' => 'auth']); 
+
 
 $routes->get('viewpost/(:num)', 'BlogController::view/$1');
 $routes->post('deleteComment/(:num)', 'CommentController::deleteComment/$1');
