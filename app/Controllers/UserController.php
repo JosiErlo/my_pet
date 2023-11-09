@@ -15,15 +15,16 @@
         }
 
         public function index()
-        {
-            $data['users'] = $this->userModel->findAll();
-            return view('user/index', $data);
-        }
-        public function create()
-        {
-            return view('user/create');
-        }
+    {
+        // Obtém o nome do usuário da sessão
+        $userName = session()->get('user_name');
 
+        // Passa o nome do usuário para a visão
+        $data['userName'] = $userName;
+
+        return view('user/index', $data);
+    }
+    
         public function store()
         {
             $data = [
@@ -62,9 +63,29 @@
             }
         }
 
-        public function delete($id)
-        {
-            $this->userModel->delete($id);
-            return redirect()->to('/user');
+    //     public function delete($id)
+    //     {
+    //         $this->userModel->delete($id);
+    //         return redirect()->to('/user');
+    //     }
+
+    public function delete($id)
+{
+    // Verifique se o usuário está autenticado
+    if (session()->get('loggedin')) {
+        // Exclua o usuário com base no ID
+        if ($this->userModel->delete($id)) {
+            // Conta excluída com sucesso, faça o logout
+            session()->destroy();
+            return redirect()->to('/');
+        } else {
+            // Lidar com erros, se a exclusão falhar
+            return 'Erro ao excluir a conta';
         }
+    } else {
+        // Usuário não está autenticado, redirecione ou exiba uma mensagem de erro
+        return redirect()->to('/auth/showLoginForm')->with('error', 'Você não está autenticado.');
     }
+}
+
+}

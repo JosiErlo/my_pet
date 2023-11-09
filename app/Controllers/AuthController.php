@@ -6,15 +6,18 @@ use App\Models\UserModel;
 
 class AuthController extends Controller
 {
-    protected $userService;
-        protected $userModel; // Adicione esta propriedade
-    public function __construct()
-    {
-        // Obtenha as dependências usando o Service Container
-        $this->userService = service('userService');
-        $this->userModel = new UserModel(); // Injete o UserModel no construtor
-    }
-   
+    
+ 
+        protected $userService;
+        protected $userModel;
+    
+        public function __construct()
+        {
+            $this->userService = service('userService');
+            $this->userModel = new UserModel(); // Injete o UserModel no construtor
+        }
+    
+    
 
     public function index()
     {
@@ -40,16 +43,16 @@ class AuthController extends Controller
             $password = $this->request->getPost('password');
 
             if ($userFind = $this->userService->authenticate($email, $password)) {
-
-                $userData = array(
+                $userData = [
                     'user_id' => $userFind->id,
                     'email' => $userFind->email,
+                    'userName' => $userFind->userName, // Adicione o nome do usuário aqui
                     'birthdate' => $userFind->birthdate,
                     'loggedin' => true,
-                );
-
+                ];
                 session()->set($userData);
                 return redirect()->to('/blog');
+            
             } else {
                 $data['error'] = 'Usuário ou senha incorretos.';
                 return view('login', $data);
@@ -214,5 +217,10 @@ class AuthController extends Controller
         return redirect()->to('login')->with('success', 'Senha atualizada com sucesso. Faça o login com sua nova senha.');
     }
     
-    
+    public function showUserPage()
+{
+    // Lógica para exibir a página do usuário
+    return view('blog'); // Substitua 'user_page' pelo nome da sua visão
+}
+
 }    

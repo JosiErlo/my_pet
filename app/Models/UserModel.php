@@ -32,5 +32,8 @@ class UserModel extends Model
     
         return $this->update($userId, $data);
     }
-    
+    public function getUserById($id)
+{
+    return $this->find($id);
+}
 }

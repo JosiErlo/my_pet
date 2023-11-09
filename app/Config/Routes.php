@@ -51,6 +51,8 @@ $routes->add('esqueceusenha', 'AuthController::updatePassword');
 $routes->post('esqueceusenha', 'AuthController::updatePassword');
 $routes->post('updatePassword', 'AuthController::updatePassword');
 
+$routes->add('user/delete/(:num)', 'UserController::delete/$1', ['post']);
+$routes->get('user', 'UserController::showUserPage');
 
 $routes->get('user', 'UserController::showUserPage');
 

@@ -33,7 +33,6 @@ class UserService
     {
         $user = new User();
 
-
         $user->email = $userArray['email'];
         $user->password = password_hash($userArray['password'], PASSWORD_BCRYPT);
         $user->birthdate = $userArray['birthdate'];
@@ -64,4 +63,22 @@ class UserService
         return $this->userModel->where('email', $email)->first();
     }
 
+    public function deleteUser($id)
+    {
+        // Recupere o usuário com base no ID
+        $user = $this->userModel->find($id);
+
+        if ($user) {
+            // Realize a lógica de exclusão, por exemplo:
+            if ($this->userModel->delete($id)) {
+                return true;
+            } else {
+                // Lidar com erros, se a exclusão falhar
+                return false;
+            }
+        } else {
+            // Lidar com o caso em que o usuário não foi encontrado
+            return false;
+        }
+    }
 }

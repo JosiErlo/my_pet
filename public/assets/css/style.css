@@ -379,7 +379,20 @@ bottom: 0;
     .card{
         position: left;
     }
+    
+
 }
+.navbar .message { 
+    color:#fff ;
+    font-family: Arial, sans-serif; 
+    text-align: left; 
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    font-size: 15px;
+}
+
+
 
 /* RESPONSIVIDADE */
 
@@ -393,4 +406,5 @@ bottom: 0;
         flex: 2;
         padding: 20px;
     }
-} */
+    
+}

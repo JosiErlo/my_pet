@@ -18,23 +18,26 @@ class BlogController extends Controller
     }
 
     public function index()
-    {
-        $category = $this->request->getGet('category');
+{
+    $category = $this->request->getGet('category');
     
-        if ($category && $category !== 'all') {
-            $posts = $this->postModel->findByCategory($category);
-        } else {
-            $posts = $this->postModel->findAll();
-        }
-    
-        $data = [
-            'posts' => $posts,
-            'selectedCategory' => $category,
-        ];
-    
-        return view('blog', $data);
-    }
+    // Suponha que você tenha obtido o email do usuário logado da sessão
+    $email = session()->get('user_email'); // Ajuste a chave da sessão conforme apropriado.
 
+    if ($category && $category !== 'all') {
+        $posts = $this->postModel->findByCategory($category);
+    } else {
+        $posts = $this->postModel->findAll();
+    }
+    
+    $data = [
+        'posts' => $posts,
+        'selectedCategory' => $category,
+        'email' => $email, // Adicione o email do usuário logado aqui
+    ];
+    
+    return view('blog', $data);
+}
     public function createPost()
     {
         if ($this->request->getMethod() === 'post') {
