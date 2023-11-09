@@ -22,7 +22,17 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    margin-top: 50px;
+    margin-top: 100px;
+    background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248)); /* Gradiente radial do azul claro para o mais escuro */
+}
+
+
+.introducao{
+    margin-top: 10px;    /* Margem parte superior */
+    margin-right: 20px;  /* Margem à direita */
+    margin-bottom: 15px; /* Margem parte inferior */
+    margin-left: 30px; /*Margem à esquerda */
+    text-align: left; /* Alinha o texto à esquerda */
 }
 
 /* Estilos para o container */
@@ -370,3 +380,17 @@ bottom: 0;
         position: left;
     }
 }
+
+/* RESPONSIVIDADE */
+
+/* @media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    main {
+        flex: 2;
+        padding: 20px;
+    }
+} */
