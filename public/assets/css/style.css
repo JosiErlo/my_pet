@@ -406,6 +406,7 @@ bottom: 0;
         flex: 2;
         padding: 20px;
     }
+<<<<<<< HEAD
     
 }
 } */
@@ -442,4 +443,22 @@ bottom: 0;
       
       .introducao img {
         max-width: 400px;
+=======
+} */
+
+.introducao img {
+    float: left; /* imagem à esquerda */
+    width: 50%; /* Define a largura da imagem para ocupar metade do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 20px; /* Adiciona espaço entre a imagem e o texto */
+  }
+
+  .introducao p{
+    padding-left: 20px; /* Adiciona algum espaço à esquerda do texto */
+    padding-top: 20px;
+      }
+      
+      .introducao {
+        font-family: 'Nunito', sans-serif;
+>>>>>>> 573ff081406e69ab089512fbf9b78f601e120424
       }
