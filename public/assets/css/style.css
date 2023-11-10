@@ -394,3 +394,19 @@ bottom: 0;
         padding: 20px;
     }
 } */
+
+.introducao img {
+    float: left; /* imagem à esquerda */
+    width: 50%; /* Define a largura da imagem para ocupar metade do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 20px; /* Adiciona espaço entre a imagem e o texto */
+  }
+
+  .introducao p{
+    padding-left: 20px; /* Adiciona algum espaço à esquerda do texto */
+    padding-top: 20px;
+      }
+      
+      .introducao {
+        font-family: 'Nunito', sans-serif;
+      }

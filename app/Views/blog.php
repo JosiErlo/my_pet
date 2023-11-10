@@ -2,6 +2,10 @@
 <html>
 <head>
     <link rel="stylesheet" href="<?= base_url('../../../assets/css/style.css'); ?>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+    
 </head>
 
 <body>
@@ -19,9 +23,12 @@
     </div>
 
   
-<div class="introducao">
+    <div class="introducao">
+        <img src='../../../assets/img/arara.jpg' alt="Animais início">
+
+
     <h3 style="font-size: 20px">
-        <span>Ter um animal de estimação pode trazer inúmeros benefícios
+        <p>Ter um animal de estimação pode trazer inúmeros benefícios
             para a nossa vida. Além de nos proporcionarem companhia e alegria,
             os pets têm um impacto positivo em nossa saúde física, emocional e social.
             Vamos explorar a importância de ter um pet e como eles podem melhorar a nossa qualidade de vida.
@@ -34,7 +41,7 @@
             recompensadora e transformadora.
             Contribua também para aumentar as experiências que
             você tem com seu animalzinho.
-        </span>
+        </p>
     </h3>
 </div>
     
