@@ -4,7 +4,7 @@ $routes->post('login', 'AuthController::authenticate');
 $routes->get('register', 'AuthController::showRegistrationForm'); // Alterei para 'showRegistrationForm'
 $routes->post('register', 'AuthController::createUser');
 $routes->get('logout', 'AuthController::logout');
-$routes->get('blog/viewpost/(:num)', 'BlogController::view/$1');
+
 $routes->get('blog/filterByCategory', 'BlogController::filterByCategory');
 $routes->get('bem-vindo', 'AuthController::BemVindo');
 $routes->get('parceiros', 'ParceirosController::index');
@@ -29,6 +29,8 @@ $routes->get('post/delete/(:num)', 'PostController::delete/$1');
 
 // Rota para visualizar comentários
 $routes->get('comment/viewComments/(:num)', 'CommentController::viewComments/$1');
+$routes->get('deleteComment/(:num)', 'CommentController::deleteComment/$1');
+$routes->get('blog/viewpost/(:num)', 'BlogController::view/$1');
 
 // Rota para a página de usuários
 $routes->get('usuarios', 'UserController::index'); // Alterei para UserController
@@ -45,6 +47,7 @@ $routes->add('deletePost/(:num)', 'PostController::deletePost/$1', ['filter' => 
 
 
 $routes->get('viewpost/(:num)', 'BlogController::view/$1');
+
 $routes->post('deleteComment/(:num)', 'CommentController::deleteComment/$1');
 $routes->post('updatePassword', 'AuthController::updatePassword');
 $routes->post('auth/updatePassword', 'AuthController::updatePassword');

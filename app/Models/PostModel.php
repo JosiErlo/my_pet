@@ -8,8 +8,18 @@ class PostModel extends Model
 {
     protected $table = 'posts';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['title','content','tipo_post_id'];
-    
+    protected $allowedFields = ['title', 'content', 'tipo_post_id'];
+
+    public function createPost($title, $content, $tipo_post_id)
+    {
+        $data = [
+            'title' => $title,
+            'content' => $content,
+            'tipo_post_id' => $tipo_post_id,
+        ];
+
+        return $this->insert($data);
+    }
     public function findByCategory($category)
     
 
@@ -45,14 +55,15 @@ class PostModel extends Model
    
        return $categories;
    }
-   
    public function deletePost($postId)
-   {
-       // Tente excluir a postagem pelo ID
-       $this->where('id', $postId)->delete();
-   
-       // Verifique se a exclusão foi bem-sucedida
-       return $this->db->affectedRows() > 0;
-   }
-   
+{
+    // Tente excluir a postagem pelo ID
+    $this->db->transStart();
+    $this->where('id', $postId)->delete();
+    $this->db->transComplete();
+
+    // Verifique se a exclusão foi bem-sucedida
+    return $this->db->affectedRows() > 0;
+}
+
 }

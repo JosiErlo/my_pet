@@ -1,41 +1,34 @@
 <?php
-
+// CommentService.php
 namespace App\Services;
 
 use App\Entities\Comment;
 use App\Models\CommentModel;
 use App\Models\UserModel;
+
 class CommentService
 {
     protected $commentModel;
     protected $userModel;
+
     public function __construct()
     {
         $this->commentModel = new CommentModel();
         $this->userModel = new UserModel();
     }
 
-    public function createComment($comment)
+    public function createComment($commentData)
     {
-        $comment = new Comment($comment);
+        $comment = new Comment($commentData);
 
-        if ($this->commentModel->insert($comment)) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->commentModel->insert($comment);
     }
 
     public function selfDelete($id)
     {
-        if ($this->commentModel->delete($id)) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->commentModel->delete($id);
     }
 
-    // Novo método para buscar um usuário pelo email
     public function getUserByEmail($email)
     {
         $user = $this->userModel->select('password')->where('email', $email)->first();

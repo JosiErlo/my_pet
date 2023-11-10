@@ -37,16 +37,18 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
+
+
     public function editComment($commentId)
     {
         $comment = $this->commentModel->find($commentId);
-    
+
         if (!$comment) {
             return redirect()->back()->with('error', 'Comentário não encontrado.');
         }
-    
-    
-    
+
+
+
         return view('edit_comment', ['comment' => $comment]);
     }
     public function updateComment()

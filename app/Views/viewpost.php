@@ -8,12 +8,16 @@
 
 <body>
     <h1>Visualizar Postagem</h1>
-    <h2><?= $post['title']; ?></h2>
-    <p><?= $post['content']; ?></p>
+    <h2>
+        <?= $post['title']; ?>
+    </h2>
+    <p>
+        <?= $post['content']; ?>
+    </p>
     <a href="<?= site_url('post/delete/' . $post['id']); ?>">Excluir</a>
     <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 
-    <?php if (session()->has('success')) : ?>
+    <?php if (session()->has('success')): ?>
         <br>
         <?= session()->getFlashdata('success'); ?>
     <?php endif; ?>
@@ -26,29 +30,29 @@
     </form>
 
     <div class="comment-container">
-    <?php if (!empty($comments)) : ?>
-        <h3>Comentários:</h3>
-        <ul>
-            <?php foreach ($comments as $comment) : ?>
-                <li>
-                    <?= $comment->content; ?>
+        <?php if (!empty($comments)): ?>
+            <h3>Comentários:</h3>
+            <ul>
+                <?php foreach ($comments as $comment): ?>
+                    <li>
+                        <?= $comment->content; ?>
 
-                    <form action="<?= site_url('updateComment'); ?>" method="post">
-                        <input type="hidden" name="comment_id" value="<?= $comment->id; ?>">
-                        <textarea name="new_content" placeholder="Novo conteúdo do comentário"></textarea>
-                        <button type="submit">Atualizar Comentário</button>
-                    </form>
+                        <form action="<?= site_url('updateComment'); ?>" method="post">
+                            <input type="hidden" name="comment_id" value="<?= $comment->id; ?>">
+                            <textarea name="new_content" placeholder="Novo conteúdo do comentário"></textarea>
+                            <button type="submit">Atualizar Comentário</button>
+                        </form>
 
-                    <form action="<?= route_to('deleteComment', $comment->id); ?>" method="post">
-                        <button type="submit">Excluir Comentário</button>
-                    </form>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else : ?>
-        <p>Nenhum comentário ainda.</p>
-    <?php endif; ?>
-</div>
+                        <form action="<?= site_url('deleteComment/' . $comment->id); ?>" method="post">
+                            <button type="submit">Excluir Comentário</button>
+                        </form>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Nenhum comentário ainda.</p>
+        <?php endif; ?>
+    </div>
 
 </body>
 

@@ -17,7 +17,7 @@
             </div>
             <div>
                 <label for="content">Conteúdo:</label>
-                <textarea name="content" id="content" rows="5" required></textarea>
+                <textarea name="content" id="content" rows="6" required></textarea>
             </div>
             <div>
                 <label for="tipo_post_id">Categoria:</label>
