@@ -37,40 +37,57 @@ class AuthController extends Controller
     }
 
     public function authenticate()
-{
-    if ($this->request->getMethod() === 'post') {
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
-
-        // Consultar o banco de dados para encontrar o usuário com base no email
-        $userModel = new UserModel();
-        $user = $userModel->where('email', $email)->first();
-
-        // Mensagens de depuração
-        echo 'Senha fornecida: ' . $password . '<br>';
-        echo 'Hash no banco de dados: ' . $user->password . '<br>';
-
-        if ($user && password_verify($password, $user->password)) {
-            // Senha está correta
-            $userData = [
-                'user_id' => $user->id,
-                'email' => $user->email,
-                'loggedin' => true,
-            ];
-            session()->set($userData);
-            return redirect()->to('/blog');
-        } else {
-            // Senha está incorreta ou usuário não encontrado
-            $data['error'] = 'Usuário ou senha incorretos.';
-            // Mensagem de depuração
-            echo 'Autenticação falhou.<br>';
-            return view('login', $data);
+    {
+        if ($this->request->getMethod() === 'post') {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+    
+            // Consultar o banco de dados para encontrar o usuário com base no email
+            $userModel = new UserModel();
+    
+            try {
+            //     // Consulta SQL de depuração
+            //     echo 'Consulta SQL: ' . $userModel->getLastQuery() . '<br>';
+    
+                $user = $userModel->where('email', $email)->first();
+    
+            //     // Mensagem de depuração
+            //     echo 'Resultado da consulta para o e-mail ' . $email . ': ' . json_encode($user) . '<br>';
+    
+                if ($user) {
+            //         // Mensagem de depuração
+            //         echo 'Senha fornecida: ' . $password . '<br>';
+            //         echo 'Senha no banco de dados: ' . $user->password . '<br>';
+    
+                    if (password_verify($password, $user->password)) {
+                        // Senha está correta
+                        $userData = [
+                            'user_id' => $user->id,
+                            'email' => $user->email,
+                            'loggedin' => true,
+                        ];
+                        session()->set($userData);
+                        return redirect()->to('/blog');
+                    } else {
+                        // Senha está incorreta
+                        // echo 'Senha incorreta<br>';
+                    }
+                } else {
+                    // Usuário não encontrado
+                    echo 'Usuário não encontrado<br>';
+                }
+            } catch (\Exception $e) {
+                // Tratar erro de banco de dados
+                echo 'Erro ao acessar o banco de dados: ' . $e->getMessage() . '<br>';
+                $data['error'] = 'Erro ao acessar o banco de dados.';
+                return view('login', $data);
+            }
         }
+    
+        // Retorna a view de login padrão caso não seja um método POST
+        return view('login');
     }
-
-    return view('login');
-}
-
+    
     public function showRegistrationForm()
     {
         // Página de registro

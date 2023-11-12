@@ -25,6 +25,7 @@ class CreateCommentsTable extends Migration
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
+                'null' => true, // Permite valores nulos
             ],
             'post_id' => [
                 'type' => 'INT',
@@ -34,8 +35,8 @@ class CreateCommentsTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('user_id', 'users', 'id');
-        $this->forge->addForeignKey('post_id', 'posts', 'id'); 
+        $this->forge->addForeignKey('user_id', 'users', 'id', 'SET NULL', 'CASCADE'); // Alterado para permitir ON DELETE SET NULL
+        $this->forge->addForeignKey('post_id', 'posts', 'id');
         $this->forge->createTable('comments');
     }
 
