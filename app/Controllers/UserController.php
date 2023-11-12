@@ -65,22 +65,24 @@
 
     //   
     public function delete($id)
-{
-    // Verifique se o usuário está autenticado
-    if (session()->get('loggedin')) {
-        // Exclua o usuário com base no ID
-        if ($this->userModel->delete($id)) {
-            // Conta excluída com sucesso, faça o logout
+    {
+        // Verifique se o usuário está autenticado
+        if (session()->get('loggedin')) {
+            // Exclua o usuário com base no ID
+            $this->userModel->delete($id);
+    
+            // Não exclua os comentários e posts associados ao usuário, apenas o usuário em si
+    
+            // Faça o logout
             session()->destroy();
+    
             return redirect()->to('/');
         } else {
             // Lidar com erros, se a exclusão falhar
             return 'Erro ao excluir a conta';
         }
-    } else {
-        // Usuário não está autenticado, redirecione ou exiba uma mensagem de erro
-        return redirect()->to('/auth/showLoginForm')->with('error', 'Você não está autenticado.');
     }
-}
+    
+
 
 }
