@@ -63,12 +63,7 @@
             }
         }
 
-    //     public function delete($id)
-    //     {
-    //         $this->userModel->delete($id);
-    //         return redirect()->to('/user');
-    //     }
-
+    //   
     public function delete($id)
 {
     // Verifique se o usuário está autenticado

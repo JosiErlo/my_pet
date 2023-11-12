@@ -37,30 +37,39 @@ class AuthController extends Controller
     }
 
     public function authenticate()
-    {
-        if ($this->request->getMethod() === 'post') {
-            $email = $this->request->getPost('email');
-            $password = $this->request->getPost('password');
+{
+    if ($this->request->getMethod() === 'post') {
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
 
-            if ($userFind = $this->userService->authenticate($email, $password)) {
-                $userData = [
-                    'user_id' => $userFind->id,
-                    'email' => $userFind->email,
-                    'userName' => $userFind->userName, // Adicione o nome do usuário aqui
-                    'birthdate' => $userFind->birthdate,
-                    'loggedin' => true,
-                ];
-                session()->set($userData);
-                return redirect()->to('/blog');
-            
-            } else {
-                $data['error'] = 'Usuário ou senha incorretos.';
-                return view('login', $data);
-            }
+        // Consultar o banco de dados para encontrar o usuário com base no email
+        $userModel = new UserModel();
+        $user = $userModel->where('email', $email)->first();
+
+        // Mensagens de depuração
+        echo 'Senha fornecida: ' . $password . '<br>';
+        echo 'Hash no banco de dados: ' . $user->password . '<br>';
+
+        if ($user && password_verify($password, $user->password)) {
+            // Senha está correta
+            $userData = [
+                'user_id' => $user->id,
+                'email' => $user->email,
+                'loggedin' => true,
+            ];
+            session()->set($userData);
+            return redirect()->to('/blog');
+        } else {
+            // Senha está incorreta ou usuário não encontrado
+            $data['error'] = 'Usuário ou senha incorretos.';
+            // Mensagem de depuração
+            echo 'Autenticação falhou.<br>';
+            return view('login', $data);
         }
-
-        return view('login');
     }
+
+    return view('login');
+}
 
     public function showRegistrationForm()
     {
@@ -81,25 +90,26 @@ class AuthController extends Controller
     }
 
     public function createUser()
-    {
-        $postData = $this->request->getPost();
+{
+    $postData = $this->request->getPost();
 
-        $userData = [
-            'email' => $postData['email'],
-            'password' => password_hash($postData['password'], PASSWORD_BCRYPT),
-            'birthdate' => $postData['birthdate'],
-            'mother_name' => $postData['mother_name'],
-        ];
+    $userData = [
+        'email' => $postData['email'],
+        'password' => $postData['password'], // Armazenar a senha sem hash
+        'birthdate' => $postData['birthdate'],
+        'mother_name' => $postData['mother_name'],
+    ];
 
-        // Se o usuário for criado com sucesso, redirecione ou faça o que for necessário
-        if ($this->userService->createUser($userData)) {
-            return redirect('/');
-        }
-
-        $data['errors'] = method_exists($this->userService, 'getErrors') ? $this->userService->getErrors() : [];
-
-        return view('register', $data);
+    // Se o usuário for criado com sucesso, redirecione ou faça o que for necessário
+    if ($this->userService->createUser($userData)) {
+        return redirect('/');
     }
+
+    $data['errors'] = method_exists($this->userService, 'getErrors') ? $this->userService->getErrors() : [];
+
+    return view('register', $data);
+}
+
 
     public function logout()
     {
