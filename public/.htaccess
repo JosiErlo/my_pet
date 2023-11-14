@@ -1,12 +1,13 @@
 # Disable directory browsing
 Options -Indexes
 
+# Set the maximum upload file size to 20 megabytes
+php_value upload_max_filesize 20M
+
 # ----------------------------------------------------------------------
 # Rewrite engine
 # ----------------------------------------------------------------------
 
-# Turning on the rewrite engine is necessary for the following rules and features.
-# FollowSymLinks must be enabled for this to work.
 <IfModule mod_rewrite.c>
 	Options +FollowSymlinks
 	RewriteEngine On
@@ -45,5 +46,5 @@ Options -Indexes
 </IfModule>
 
 # Disable server signature start
-	ServerSignature Off
+ServerSignature Off
 # Disable server signature end

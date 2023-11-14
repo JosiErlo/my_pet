@@ -63,3 +63,8 @@ $routes->get('user', 'UserController::showUserPage');
 
 $routes->get('user', 'UserController::showUserPage');
 
+$route['img'] = 'ImgController';
+$routes->group('img', ['namespace' => 'App\Controllers'], function ($routes) {
+    $routes->get('uploadForm/(:num)', 'ImgController::uploadForm/$1');
+    $routes->post('visualizar_postagem/(:num)', 'ImgController::visualizar_postagem/$1');
+});

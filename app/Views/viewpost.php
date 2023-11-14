@@ -8,12 +8,17 @@
 
 <body>
     <h1>Visualizar Postagem</h1>
-    <h2>
-        <?= $post['title']; ?>
-    </h2>
-    <p>
-        <?= $post['content']; ?>
-    </p>
+    <h2><?= $post['title']; ?></h2>
+    <p><?= $post['content']; ?></p>
+
+    <!-- Adicione esta parte para exibir as imagens -->
+    <?php if (!empty($imagens)): ?>
+        <h3>Imagens:</h3>
+        <?php foreach ($imagens as $imagem): ?>
+            <img src="<?= base_url('assets/uploads/' . $imagem->caminho_imagem); ?>" alt="Imagem">
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <a href="<?= site_url('post/delete/' . $post['id']); ?>">Excluir</a>
     <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 

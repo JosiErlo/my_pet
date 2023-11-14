@@ -10,7 +10,7 @@
 <body>
     <div class="createpost">
         <h1>Formulário de Criação de Post</h1>
-        <form method="post" action="/createpost">
+        <form method="post" action="/createpost" enctype="multipart/form-data">
             <div>
                 <label for="title">Título:</label>
                 <input type="text" name="title" id="title" required>
@@ -30,12 +30,16 @@
                     <option value="5">Diversos</option>
                 </select>
             </div>
+            <div>
+                <label for="userfile">Escolha uma foto:</label>
+                <input type="file" name="userfile" id="userfile" required>
+            </div>
             <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
             <div>
                 <button type="submit">Criar Postagem</button>
             </div>
+        </form>
     </div>
-    </form>
 </body>
 
 </html>
