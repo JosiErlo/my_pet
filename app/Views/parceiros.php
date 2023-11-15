@@ -9,7 +9,6 @@
     <div class="navbar">
         <a href="/blog">Blog</a>
         <a href="/parceiros">Parceiros</a>
-        <a href="#">ONGs</a>
         <a href="/localizador_petshops">Pet Shops</a>
         <a href="/login">Criar post</a>
         <a href="/login">Entrar</a>
