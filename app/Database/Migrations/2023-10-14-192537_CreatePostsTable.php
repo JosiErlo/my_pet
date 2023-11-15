@@ -27,7 +27,13 @@ class CreatePostsTable extends Migration
                 'constraint' => 11,
                 'unsigned' => true,
             ],
+            'imagem' => [ 
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'null' => true, 
+            ],
         ]);
+    
     
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('tipo_post_id', 'categorias', 'id');

@@ -8,8 +8,8 @@
 
 <body>
     <h1>Visualizar Postagem</h1>
-    <h2><?= $post['title']; ?></h2>
-    <p><?= $post['content']; ?></p>
+    <h2><?= $post->title; ?></h2>
+    <p><?= $post->content; ?></p>
 
     <!-- Adicione esta parte para exibir as imagens -->
     <?php if (!empty($imagens)): ?>
@@ -19,7 +19,7 @@
         <?php endforeach; ?>
     <?php endif; ?>
 
-    <a href="<?= site_url('post/delete/' . $post['id']); ?>">Excluir</a>
+    <a href="<?= site_url('post/delete/' . $post->id); ?>">Excluir</a>
     <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 
     <?php if (session()->has('success')): ?>
@@ -28,7 +28,7 @@
     <?php endif; ?>
 
     <form action="<?= site_url('addComment'); ?>" method="post">
-        <input type="hidden" name="post_id" value="<?= $post['id']; ?>">
+        <input type="hidden" name="post_id" value="<?= $post->id; ?>">
         <input type="hidden" name="user_id" value="<?= session()->get('user_id'); ?>">
         <textarea name="content" placeholder="Adicione seu comentário"></textarea>
         <button type="submit">Enviar Comentário</button>
