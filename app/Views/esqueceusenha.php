@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<?= base_url('../../../assets/css/style.css'); ?>">
     <title>Redefinir Senha</title>
 </head>
 <body>
+    <div class = "senhaperdida">
     <h1>Redefinir Senha</h1>
     <form method="post" action="<?= site_url('auth/updatePassword') ?>">
         <label for="email">Email:</label>
@@ -16,5 +18,10 @@
         <input type="password" name="new_password" id="new_password" required><br><br>
         <button type="submit">Salvar Nova Senha</button>
     </form>
+    </div>
+    <div id="right-container">
+        <!-- Adicione a imagem de captura de tela aqui -->
+        <img src="../../../assets/img/gatinhosemfundo.png">
+    </div>
 </body>
 </html>

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ImagemModel extends Model
 {
-    protected $table      = 'imagens'; 
+    protected $table      = 'imagens';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $allowedFields = ['post_id', 'caminho_imagem'];

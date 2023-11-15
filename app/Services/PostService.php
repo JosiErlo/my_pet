@@ -18,8 +18,8 @@ class PostService
     {
         $post = new Post($postData);
 
-        if ($this->postModel->insert($post)) {
-            return true;
+        if ($id = $this->postModel->createPost($post)) {
+            return $id;
         } else {
             return false;
         }
@@ -32,12 +32,22 @@ class PostService
 
     public function updatePost($id, $postData)
     {
-        $post = new Post($postData);
+        // Busca o post pelo ID
+        $post = $this->postModel->find($id);
+       
+        // Verifica se o post foi encontrado
+        if (!$post) {
+            return false; // Ou outra indicação de falha
+        }
 
-        if ($this->postModel->update($id, $post)) {
+        // Preenche os dados do post com os novos dados
+        $post->fill($postData);
+       
+        // Realiza a atualização no banco de dados
+        if ($this->postModel->updateImagePost($post)) {
             return true;
         } else {
-            return false;
+            return false; // Ou outra indicação de falha
         }
     }
 
@@ -45,5 +55,4 @@ class PostService
     {
         return $this->postModel->delete($id);
     }
-
 }

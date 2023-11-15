@@ -4,17 +4,19 @@ namespace App\Controllers;
 
 use App\Models\CommentModel;
 use App\Models\PostModel;
+use App\Services\PostService;
 use CodeIgniter\Controller;
 
 class BlogController extends Controller
 {
     private $postModel;
     private $commentModel;
-
+    protected $servicePost;
     public function __construct()
     {
         $this->postModel = new PostModel();
         $this->commentModel = new CommentModel();
+        $this->servicePost = new PostService();
     }
 
     public function index()
@@ -38,6 +40,8 @@ class BlogController extends Controller
     
     return view('blog', $data);
 }
+
+
     public function createPost()
     {
         if ($this->request->getMethod() === 'post') {
@@ -50,12 +54,34 @@ class BlogController extends Controller
                 return redirect()->back()->withInput()->with('error', $this->validator->listErrors());
             }
 
-            $this->postModel->insert($this->request->getPost());
+            if ($id_post = $this->servicePost->createPost($this->request->getPost())) {
+             
+                $this->upload_image($this->request->getFile('userfile'), $id_post);
+            } else {
+                return redirect()->to('/blog')->with('success', 'Postagem criada com sucesso.');
+            }
 
             return redirect()->to('/blog')->with('success', 'Postagem criada com sucesso.');
         }
 
         return $this->showCreatePostForm();
+    }
+
+    private function upload_image($image, $postId)
+    {
+        $destinationDirectory = 'assets/imgs/';
+      
+        $filename = uniqid() . '_' . preg_replace('/\s+/', '', $image->getName());
+
+        if ($image->move($destinationDirectory, $filename)) {
+            if($this->servicePost->updatePost( $postId, ['imagem' => $filename])){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
     public function showCreatePostForm()

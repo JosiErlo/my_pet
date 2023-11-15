@@ -439,6 +439,8 @@ bottom: 0;
         position: absolute;
         top: 20px;
         left: 20px;
+        width: 5px;
+        height: 5px;
       }
       
       .introducao img {
@@ -462,3 +464,11 @@ bottom: 0;
         font-family: 'Nunito', sans-serif;
 
       }
+
+    .senhaperdida{
+background-color: #b81010;
+border-radius: 15px;
+font-family: 'Nunito', sans-serif;
+color:#fff 
+
+    }

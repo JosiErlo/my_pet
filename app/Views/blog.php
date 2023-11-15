@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= base_url('../../../assets/css/style.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <title>My Pet Blog</title>
 </head>
@@ -14,8 +14,7 @@
     <div class="navbar">
         <a href="/blog">Blog</a>
         <a href="/parceiros">Parceiros</a>
-        <a href="#">ONGs</a>
-        <a href="/localizador_petshops">Pet Shops</a>
+       <a href="/localizador_petshops">Pet Shops</a>
         <a href="/createpost">Criar post</a>
         <a href="<?= site_url('logout'); ?>">Logout</a>
         <div class="message">
@@ -31,14 +30,10 @@
     <h1 class="title">My Pet Blog</h1>
 
     
-
-   
-
-    <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="../../../assets/img/gatinhosemfundo.png" alt="Logo">
         </div>
-    </header>
+  
   
     <main>
         <div class="introducao">
@@ -71,9 +66,11 @@
         <div class="post-list">
         <?php foreach ($posts as $post) : ?>
             <div class="post">
-                <h2><?= $post['title']; ?></h2>
-                <p><?= substr($post['content'], 0, 50); ?>...</p>
-                <a href="<?= site_url('blog/viewpost/' . $post['id']); ?>">Leia mais</a>
+             
+                <img width="50" src="<?= base_url('assets/imgs')?>/<?=$post->imagem?>"  />
+                <h2><?= $post->title; ?></h2>
+                <p><?= substr($post->content, 0, 50); ?>...</p>
+                <a href="<?= site_url('blog/viewpost/' . $post->id); ?>">Leia mais</a>
             </div>
         <?php endforeach; ?>
     </div>
