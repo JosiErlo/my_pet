@@ -6,18 +6,14 @@ use App\Models\UserModel;
 
 class AuthController extends Controller
 {
-    
- 
-        protected $userService;
-        protected $userModel;
-    
-        public function __construct()
-        {
-            $this->userService = service('userService');
-            $this->userModel = new UserModel(); // Injete o UserModel no construtor
-        }
-    
-    
+    protected $userService;
+    protected $userModel;
+
+    public function __construct()
+    {
+        $this->userService = service('userService');
+        $this->userModel = new UserModel(); // Injete o UserModel no construtor
+    }
 
     public function index()
     {
@@ -41,24 +37,14 @@ class AuthController extends Controller
         if ($this->request->getMethod() === 'post') {
             $email = $this->request->getPost('email');
             $password = $this->request->getPost('password');
-    
+
             // Consultar o banco de dados para encontrar o usuário com base no email
             $userModel = new UserModel();
-    
+
             try {
-            //     // Consulta SQL de depuração
-            //     echo 'Consulta SQL: ' . $userModel->getLastQuery() . '<br>';
-    
                 $user = $userModel->where('email', $email)->first();
-    
-            //     // Mensagem de depuração
-            //     echo 'Resultado da consulta para o e-mail ' . $email . ': ' . json_encode($user) . '<br>';
-    
+
                 if ($user) {
-            //         // Mensagem de depuração
-            //         echo 'Senha fornecida: ' . $password . '<br>';
-            //         echo 'Senha no banco de dados: ' . $user->password . '<br>';
-    
                     if (password_verify($password, $user->password)) {
                         // Senha está correta
                         $userData = [
@@ -83,11 +69,11 @@ class AuthController extends Controller
                 return view('login', $data);
             }
         }
-    
+
         // Retorna a view de login padrão caso não seja um método POST
         return view('login');
     }
-    
+
     public function showRegistrationForm()
     {
         // Página de registro
@@ -107,26 +93,25 @@ class AuthController extends Controller
     }
 
     public function createUser()
-{
-    $postData = $this->request->getPost();
+    {
+        $postData = $this->request->getPost();
 
-    $userData = [
-        'email' => $postData['email'],
-        'password' => $postData['password'], // Armazenar a senha sem hash
-        'birthdate' => $postData['birthdate'],
-        'mother_name' => $postData['mother_name'],
-    ];
+        $userData = [
+            'email' => $postData['email'],
+            'password' => $postData['password'], 
+            'birthdate' => $postData['birthdate'],
+            'mother_name' => $postData['mother_name'],
+        ];
 
-    // Se o usuário for criado com sucesso, redirecione ou faça o que for necessário
-    if ($this->userService->createUser($userData)) {
-        return redirect('/');
+        // Se o usuário for criado com sucesso, redirecione ou faça o que for necessário
+        if ($this->userService->createUser($userData)) {
+            return redirect('/');
+        }
+
+        $data['errors'] = method_exists($this->userService, 'getErrors') ? $this->userService->getErrors() : [];
+
+        return view('register', $data);
     }
-
-    $data['errors'] = method_exists($this->userService, 'getErrors') ? $this->userService->getErrors() : [];
-
-    return view('register', $data);
-}
-
 
     public function logout()
     {
@@ -188,14 +173,10 @@ class AuthController extends Controller
                 // Post criado com sucesso, redirecione para a página de blog ou para onde desejar
                 return redirect()->to('/blog');
             } else {
-                // Lidar com erros, se a criação do post falhar
-                // Você pode redirecionar de volta ao formulário de criação com mensagens de erro, por exemplo
-                // return redirect()->to('/createpost')->withInput()->with('errors', $postModel->errors());
+                return redirect()->to('/createpost')->withInput()->with('errors', $postModel->errors());
             }
         } catch (\Exception $e) {
-            // Lidar com exceções, se ocorrerem
-            // Você pode redirecionar de volta ao formulário de criação com mensagens de erro personalizadas
-            // return redirect()->to('/createpost')->withInput()->with('error', 'Ocorreu um erro ao criar o post: ' . $e->getMessage());
+
         }
     }
 
@@ -210,7 +191,7 @@ class AuthController extends Controller
             return view('viewpost', ['post' => $post]);
         } else {
             // Trate o caso em que a postagem não foi encontrada
-            // Pode ser uma boa prática exibir uma mensagem de erro ou redirecionar para a página de blog.
+
         }
     }
 
@@ -225,29 +206,28 @@ class AuthController extends Controller
         $birthdate = $this->request->getPost('birthdate');
         $motherName = $this->request->getPost('mother_name');
         $newPassword = $this->request->getPost('new_password');
-    
+
         // Consulte o banco de dados para encontrar o usuário com base no email, data de nascimento e nome da mãe.
         $userModel = new UserModel();
         $user = $userModel->where('email', $email)
             ->where('birthdate', $birthdate)
             ->where('mother_name', $motherName)
             ->first();
-    
+
         if (!$user) {
             return redirect()->to('/auth/showForgotPasswordForm')->with('error', 'Informações incorretas. Tente novamente.');
         }
-    
+
         // Atualize a senha do usuário
         $user->password = password_hash($newPassword, PASSWORD_BCRYPT);
         $userModel->save($user);
-    
+
         return redirect()->to('login')->with('success', 'Senha atualizada com sucesso. Faça o login com sua nova senha.');
     }
-    
-    public function showUserPage()
-{
-    // Lógica para exibir a página do usuário
-    return view('blog'); // Substitua 'user_page' pelo nome da sua visão
-}
 
-}    
+    public function showUserPage()
+    {
+        // Lógica para exibir a página do usuário
+        return view('blog'); // retorna para a pagina
+    }
+}

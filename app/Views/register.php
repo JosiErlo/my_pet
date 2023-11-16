@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Link para o arquivo de estilo CSS -->
     <link rel="stylesheet" href="<?= base_url('../../../assets/css/style.css'); ?>">
     <title>Registro de Usuário</title>
 </head>
@@ -15,21 +16,23 @@
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-</body>
-</html>
-<div class="signup-container">
-    <div class="logo">
-        <img src="<?= base_url('../../../assets/img/logo.png') ?>" alt="blog">
+
+    <!-- Container principal -->
+    <div class="signup-container">
+        <div class="logo">
+            <img src="<?= base_url('../../../assets/img/logo.png') ?>" alt="blog">
+        </div>
+        <div class="cachorroregistro">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png" alt="Puppy">
+        </div>
     </div>
-    <div class="cachorroregistro">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png" alt="Puppy">
-    </div>
-</div>
-<div>
+
+    <!-- Container do formulário -->
     <div class="right-container">
         <header>
             <h1>Uhull, que bom ter você conosco!</h1>
 
+            <!-- Formulário de registro -->
             <form method="POST" action="/register">
                 <label for="nome">Nome completo:</label>
                 <input type="text" id="nome" name="nome" required><br>
@@ -54,4 +57,5 @@
             </form>
         </header>
     </div>
-</div>
+</body>
+</html>

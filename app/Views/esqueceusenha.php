@@ -20,8 +20,7 @@
     </form>
     </div>
     <div id="right-container">
-        <!-- Adicione a imagem de captura de tela aqui -->
-        <img src="../../../assets/img/gatinhosemfundo.png">
+             <img src="../../../assets/img/gatinhosemfundo.png">
     </div>
 </body>
 </html>

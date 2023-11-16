@@ -21,7 +21,6 @@ class HomeController extends Controller
         }
 
         $data['selectedCategory'] = $selectedCategory;
-
         return view('index', $data);
     }
 }
