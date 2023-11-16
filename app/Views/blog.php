@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <title>My Pet Blog</title>
+    <div class="topo">
+        <img src="../../../assets/img/gatinhosemfundo.png">
+    </div>
+
 </head>
 
 <body>
@@ -18,7 +22,7 @@
         <a href="/createpost">Criar post</a>
         <a href="<?= site_url('logout'); ?>">Logout</a>
         <div class="message">
-            <p>Olá, bem-vindo ao My Pet Blog,
+            <p>Olá, bem-vindo ao My Pet Blog!
                 <?= session()->get('email'); ?>
             </p>
             <form action="<?= site_url('user/delete/' . session()->get('user_id')); ?>" method="post">
@@ -28,15 +32,8 @@
             </form>
         </div>
     </div>
-
     <h1 class="title">My Pet Blog</h1>
-
-
-    <div class="logo">
-        <img src="../../../assets/img/gatinhosemfundo.png" alt="Logo">
-    </div>
-
-
+<br><br><br><br><br>
     <main>
         <div class="introducao">
 
@@ -79,12 +76,7 @@
                 <div class="grupo">
                     <div class="card" style="--clr: #009688">
                         <div class="img-box">
-
-
-
                             <img src="<?= base_url('assets/imgs') ?>/<?= $post->imagem ?>" />
-
-
                         </div>
                         <div class="content">
                             <h2>

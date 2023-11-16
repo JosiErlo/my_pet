@@ -8,7 +8,7 @@
 }
 
 /* Estilos para o corpo da página */
-body {
+body{
     align-items: center;
     background: var(--primeira-cor); /* Usa a primeira cor como plano de fundo */
     color: var(--cor-fonte); /* Usa a cor da fonte definida */
@@ -103,16 +103,6 @@ body {
     margin: 0;
 }
 
-/* Estilos para a seção de início */
-.inicio {
-    background: red;
-    color: white;
-    padding: 10px;
-    margin: 15px 0;
-    border-radius: 16px;
-    text-align: end;
-    font-size: smaller;
-}
 
 /*/* Estilos para a barra de navegação */
 .navbar {
@@ -201,16 +191,18 @@ footer {
 /* Importação de fonte do Google Fonts (Montserrat) */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
 
-.logo{
+.topo {
     padding: 5px;
-    margin:5px;
-    width: -5px; /*largura desejada */
-    height: -5px;
-    position: absolute;
-    left: 200px;
-top: 0;
-   background-attachment: fixed;
-  
+    margin: 5px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-attachment: fixed;
+}
+
+.topo img {
+    width: 100%; /* ou ajuste para a largura desejada */
+    height: auto; /* para manter a proporção original da imagem */
 }
 
 .signup-container{
@@ -472,3 +464,105 @@ font-family: 'Nunito', sans-serif;
 color:#fff 
 
     }
+
+
+
+    /* estilização da página de login */
+    body #login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #submit {
+        background-color: #3498db;
+        color: #fff;
+    }
+
+    a {
+        margin-top: 10px;
+        color: rgb(20, 198, 243);
+        cursor: pointer;
+    }
+
+    p {
+        margin-top: 10px;
+        color: #054570;
+        text-align: center;
+    }
+
+    .butõesGrupo {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #registerBotão, #voltarbotão {
+        width: calc(50% - 5px);
+        margin: 10px 2.5px;
+    }
+
+    #registerBotão {
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    #voltarbotão {
+     
+        float: right;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .imgFundoLogin {
+        background-image: url('../img/fundopáginaLOGIN.jpeg'); /* Substitua pelo caminho real da sua imagem de fundo */
+        background-size: cover; /* Para cobrir toda a tela */
+        background-position: center; /* Para centralizar a imagem */
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    #FundoLogin {
+        align-items: center;
+        background: var(--primeira-cor); /* Usa a primeira cor como plano de fundo */
+        color: var(--cor-fonte); /* Usa a cor da fonte definida */
+        display: grid;
+        font-family: var(--familia-fonte); /* Usa a família de fontes definida */
+        font-size: 14px;
+        font-weight: 400;
+        height: 100vh;
+        justify-items: center;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248)); /* Gradiente radial do azul claro para o mais escuro */
+        overflow: hidden; /* Isso evita barras de rolagem, se desejar */
+    }
+    

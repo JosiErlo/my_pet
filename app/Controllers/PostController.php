@@ -66,4 +66,43 @@ class PostController extends BaseController
         }
     }
     
+    public function updatePost($postId)
+{
+    // Verifique se o formulário foi enviado
+    if ($this->request->getMethod() === 'post') {
+        $title = $this->request->getPost('title');
+        $content = $this->request->getPost('content');
+        $categoria = $this->request->getPost('tipo_post_id'); // Corrigido para o nome do campo correto
+
+        // Validações de campos, se necessário...
+
+        // Obtém o ID da categoria
+        $categoriaModel = new CategoriaModel();
+        $categoriaId = $categoriaModel->getCategoryId($categoria);
+
+        if (!$categoriaId) {
+            // Se a categoria não existe, crie-a
+            $categoriaId = $categoriaModel->createCategory(['nome' => $categoria]);
+        }
+
+        // Dados a serem atualizados
+        $data = [
+            'title' => $title,
+            'content' => $content,
+            'tipo_post_id' => $categoriaId,
+        ];
+
+        // Instancie o modelo de postagens
+        $postModel = new PostModel();
+
+        // Use try-catch para lidar com possíveis erros
+        try {
+            // Chame o método updatePost do modelo
+            $postModel->updatePost($postId, $data);
+            return redirect()->to('/viewpost')->with('success', 'Postagem atualizada com sucesso.');
+        } catch (\Exception $e) {
+            return redirect()->to('/blog')->with('error', 'Erro ao atualizar a postagem: ' . $e->getMessage());
+        }
+    }
+}
 }

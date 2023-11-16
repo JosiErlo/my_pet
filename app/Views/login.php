@@ -7,10 +7,16 @@
 
 </head>
 
-<body>
-    <h1>Bem-vindo ao Meu Blog</h1>
+
+
+<body id="FundoLogin">
+<div class="imgFundoLogin">
+<div class="login">
+    <h1>Bem-vindo(a) ao My Pet Blog!</h1>
+    <br><br><br><br><br>
     
         <?php if (!session()->get('user_id')) : ?>
+
             <!-- Formulário de login -->
             <form method="POST" action="<?= site_url('/login'); ?>">
             <div class= "inicio">
@@ -21,15 +27,22 @@
                 <input type="password" name="password" id="password" required>
                 <br>
                 <a href="<?= site_url('esqueceusenha') ?>">Esqueceu a senha?</a>
-
-                <button type="submit">Entrar</button></div>
-              
+                <br><br>
+                <button id="submit">Entrar</button>
+            </div>
+            <br><br>
             </form>
             <!-- Link para a página de registro -->
-            <p>Não tem uma conta? <a href="<?= site_url('register'); ?>">Registre-se</a></p>
-            <a href="<?= site_url('index.php'); ?>">Voltar para o blog</a>
+            <p>Não tem uma conta? 
+                <div class="butõesGrupo">
+                <button id="registerBotão"><a href="<?= site_url('register'); ?>">Registre-se</a></button>
+                <button id="voltarbotão"><a href="<?= site_url('index.php'); ?>">Volte ao blog</a></button>
+            </p>
+
         <?php endif; ?>
     
+        
 </body>
 
 </html>
+

@@ -20,7 +20,15 @@
     <h2><?= $post->title; ?></h2>
     <p><?= $post->content; ?></p>
 
-  
+      <!-- Formulário para atualizar post -->
+      <form action="<?= site_url('updatePost/' . $post->id); ?>" method="post">
+        <input type="hidden" name="post_id" value="<?= $post->id; ?>">
+        <input type="hidden" name="user_id" value="<?= session()->get('user_id'); ?>">
+        <textarea name="content" placeholder="Atualize seu post"><?= $post->content; ?></textarea>
+        <button type="submit">Atualizar Postagem</button>
+    </form>
+
+
     <a href="<?= site_url('post/delete/' . $post->id); ?>">Excluir</a>
     <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
 
@@ -28,6 +36,7 @@
         <br>
         <?= session()->getFlashdata('success'); ?>
     <?php endif; ?>
+    
 
     <form action="<?= site_url('addComment'); ?>" method="post">
         <input type="hidden" name="post_id" value="<?= $post->id; ?>">

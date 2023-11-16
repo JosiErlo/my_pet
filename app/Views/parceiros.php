@@ -60,7 +60,7 @@
             </div>
             <div class="content">
                 <h2>Leafs</h2>
-                <p>
+                <p> 
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Architecto, hic? Magnam eum error saepe doloribus corrupti
                     repellat quisquam alias doloremque!

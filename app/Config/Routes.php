@@ -43,7 +43,9 @@ $routes->get('localizador_petshops', 'PetShopController::localizador');
 
 // Rota para excluir comentários
 $routes->get('deleteComment/(:num)', 'CommentController::deleteComment/$1');
-$routes->add('deletePost/(:num)', 'PostController::deletePost/$1', ['filter' => 'auth']); 
+$routes->match(['get', 'post'], 'deletePost/(:num)', 'PostController::deletePost/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], 'updatePost/(:num)', 'PostController::updatePost/$1', ['filter' => 'auth']);
+
 
 
 $routes->get('viewpost/(:num)', 'BlogController::view/$1');

@@ -94,4 +94,16 @@ class PostModel extends Model
         // Verifique se a exclusão foi bem-sucedida
         return $this->db->affectedRows() > 0;
     }
+
+    public function updatePost($postId, $data)
+    {
+        // Tente atualizar a postagem pelo ID
+        $this->db->transStart();
+        $this->update($postId, $data);
+        $this->db->transComplete();
+
+        // Verifique se a atualização foi bem-sucedida
+        return $this->db->affectedRows() > 0;
+    }
+   
 }
