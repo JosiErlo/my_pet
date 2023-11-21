@@ -1,51 +1,45 @@
 <?php
 
-namespace App\Models;
+namespace App\Entities;
 
-use App\Entities\User;
-use CodeIgniter\Model;
+use CodeIgniter\Entity\Entity;
+use App\Controllers\BaseController;
+use App\Models\UserModel; // Adicione a importação para UserModel
 
-class UserModel extends Model
+class User extends Entity {}
+
+class UserAuthController extends BaseController
 {
-    // Define o nome da tabela no banco de dados que esta classe representa.
-    protected $table = 'users';
+    private $userModel;
 
-    // Especifica o nome da coluna que serve como chave primária na tabela.
-    protected $primaryKey = 'id';
-
-    // Define quais campos da tabela podem ser manipulados por métodos como insert e update.
-    protected $allowedFields = ['email', 'password', 'birthdate', 'mother_name'];
-
-    // Especifica o tipo de entidade a ser retornada pelos métodos de busca.
-    protected $returnType = User::class;
-
-    // Regras de validação para os campos.
-    protected $validationRules = [
-        'email' => 'required|valid_email',
-        'password' => 'required|min_length[6]',
-        'mother_name' => 'required',
-    ];
-
-    // Método para acessar os erros de validação.
-    public function getErrors()
+    public function __construct()
     {
-        return $this->errors();
+        // Inicialize o modelo de usuário
+        $this->userModel = new UserModel();
     }
 
-    // Método para atualizar a senha de um usuário.
-    public function updatePassword($userId, $newPassword)
+    public function authenticate()
     {
-        $data = [
-            'password' => $newPassword,
-        ];
-    
-        return $this->update($userId, $data);
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        // Consulte o banco de dados para verificar as credenciais
+        $user = $this->userModel->where('email', $email)->first();
+
+        if ($user && password_verify($password, $user->password)) {
+            // Credenciais corretas, autentique o usuário como desejado
+            // Por exemplo, você pode definir uma sessão de autenticação aqui
+            $_SESSION['loggedin'] = true;
+            return redirect()->to('/blog');
+        } else {
+            // Credenciais incorretas, exibir mensagem de erro
+            $erro = 'Usuário ou senha incorretos.';
+            return view('login', ['erro' => $erro]);
+        }
     }
 
-    // Método para obter informações de um usuário pelo ID.
-    public function getUserById($id)
+    public function login()
     {
-        return $this->find($id);
+        return view('login'); // Exibe o formulário de login
     }
 }
-?>
