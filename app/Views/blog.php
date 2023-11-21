@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <title>My Pet Blog</title>
-    <div class="topo">
-        <img src="../../../assets/img/gatinhosemfundo.png">
-    </div>
-
+ 
 </head>
 
 <body>

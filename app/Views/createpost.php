@@ -8,17 +8,27 @@
 </head>
 
 <body>
-    <div class="createpost">
+<body id="createpost">
+
+<img src="../../../assets/img/vistaLateralCachorro.png">
+
+<div class="login">
+
         <h1>Formulário de Criação de Post</h1>
+        <br><br>
+
         <form method="post" action="/createpost" enctype="multipart/form-data">
             <div>
                 <label for="title">Título:</label>
+                <br>
                 <input type="text" name="title" id="title" required>
             </div>
+            <br>
             <div>
                 <label for="content">Conteúdo:</label>
                 <textarea name="content" id="content" rows="6" required></textarea>
             </div>
+            <br>
             <div>
                 <label for="tipo_post_id">Categoria:</label>
                 <select name="tipo_post_id" id="tipo_post_id" required>
@@ -30,13 +40,14 @@
                     <option value="5">Diversos</option>
                 </select>
             </div>
+            
             <div>
-                <label for="userfile">Escolha uma foto:</label>
+                <label for="userfile"></label>
                 <input type="file" name="userfile" id="userfile" required>
             </div>
             <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
             <div>
-                <button type="submit">Criar Postagem</button>
+                <button id="submit3">Criar Postagem</button>
             </div>
         </form>
     </div>

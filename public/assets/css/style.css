@@ -565,4 +565,34 @@ color:#fff
         background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248)); /* Gradiente radial do azul claro para o mais escuro */
         overflow: hidden; /* Isso evita barras de rolagem, se desejar */
     }
+
+
+    /* estilização da página esqueceu senha */
+     #FundoEsqueceuSenha{
+    background-size: cover; /* Para cobrir toda a tela */
+    background-position: center; /* Para centralizar a imagem */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #d1eaee, rgb(248, 192, 248));
+    margin-top: 10px;
+    margin-left: 10px;
+     }
+
+     #submit2 {
+        background-color: #3498db;
+        color: #fff;
+    }
     
+
+
+
+
+
+
+    #submit3 {
+        background-color: #3498db;
+        color: #fff;
+    }
