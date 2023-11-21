@@ -43,3 +43,4 @@ class UserAuthController extends BaseController
         return view('login'); // Exibe o formulário de login
     }
 }
+// oi
