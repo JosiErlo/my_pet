@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Localizador de Pet Shops</title>
     <!-- Inclua a API do Google Maps com sua chave -->
