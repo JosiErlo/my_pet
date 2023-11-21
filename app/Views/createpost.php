@@ -9,9 +9,9 @@
 
 <body>
 <body id="createpost">
-
-<img src="../../../assets/img/vistaLateralCachorro.png">
-
+<div id="imgcreatepost">
+<img src="../../../assets/img/vistaLateralCachorro.jpg">
+</div>
 <div class="login">
 
         <h1>Formulário de Criação de Post</h1>
