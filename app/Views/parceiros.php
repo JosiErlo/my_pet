@@ -67,7 +67,7 @@
 </body>
 
 
-<div class="botãoPaceiro"> 
+<div class="botãoPaceiro"> <br><br><br><br><br><br>
     <button id="voltarbotãoParceiros"><a href="<?= site_url('index.php'); ?>">Volte ao blog</a></button>         
     </div>
 
