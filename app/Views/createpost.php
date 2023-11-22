@@ -7,12 +7,11 @@
     <title>Formulário de Criação de Post</title>
 </head>
 
-<body>
+
 <body id="createpost">
-<div id="imgcreatepost">
-<img src="../../../assets/img/vistaLateralCachorro.jpg">
-</div>
-<div class="login">
+<div class="imgcreatepost">
+<img src="../../../assets/img/gatinhosemfundo.png">
+<div class="loginCreatPost">
 
         <h1>Formulário de Criação de Post</h1>
         <br><br>
@@ -40,16 +39,19 @@
                     <option value="5">Diversos</option>
                 </select>
             </div>
-            
+            <br>
             <div>
                 <label for="userfile"></label>
                 <input type="file" name="userfile" id="userfile" required>
             </div>
+            <br>
             <a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
             <div>
+            <br>
                 <button id="submit3">Criar Postagem</button>
             </div>
         </form>
+    </div>
     </div>
 </body>
 

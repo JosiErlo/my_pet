@@ -9,10 +9,10 @@
 
 
 <body id="FundoEsqueceuSenha">
+
+<div class="imgEsqueceuSenha">
   
-        <img src="../../../assets/img/gatinhosemfundo.png">
-  
-    <div class="login">
+    <div class="loginEsqueceuSenha">
         <h1>Redefinir Senha</h1>
         <br><br>
         

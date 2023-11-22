@@ -1,19 +1,27 @@
 /* Defina as variáveis de cores e fontes */
 :root {
-    --primeira-cor: #abdbf7; /* Define uma variável para a primeira cor */
-    --segunda-cor: #717a82;  /* Define uma variável para a segunda cor */
-    --cor-fonte: rgba(0, 0, 0, .8); /* Define uma variável para a cor da fonte com transparência */
-    --familia-fonte: 'Montserrat', sans-serif; /* Define a família de fontes */
-    --form-border-color: rgba(0, 0, 0, .1); /* Define a cor da borda do formulário com transparência */
+    --primeira-cor: #abdbf7;
+    /* Define uma variável para a primeira cor */
+    --segunda-cor: #717a82;
+    /* Define uma variável para a segunda cor */
+    --cor-fonte: rgba(0, 0, 0, .8);
+    /* Define uma variável para a cor da fonte com transparência */
+    --familia-fonte: 'Montserrat', sans-serif;
+    /* Define a família de fontes */
+    --form-border-color: rgba(0, 0, 0, .1);
+    /* Define a cor da borda do formulário com transparência */
 }
 
 /* Estilos para o corpo da página */
-body{
+body {
     align-items: center;
-    background: var(--primeira-cor); /* Usa a primeira cor como plano de fundo */
-    color: var(--cor-fonte); /* Usa a cor da fonte definida */
+    background: var(--primeira-cor);
+    /* Usa a primeira cor como plano de fundo */
+    color: var(--cor-fonte);
+    /* Usa a cor da fonte definida */
     display: grid;
-    font-family: var(--familia-fonte); /* Usa a família de fontes definida */
+    font-family: var(--familia-fonte);
+    /* Usa a família de fontes definida */
     font-size: 14px;
     font-weight: 400;
     height: 100vh;
@@ -23,16 +31,22 @@ body{
     padding: 0;
     box-sizing: border-box;
     margin-top: 100px;
-    background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248)); /* Gradiente radial do azul claro para o mais escuro */
+    background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248));
+    /* Gradiente radial do azul claro para o mais escuro */
 }
 
 
-.introducao{
-    margin-top: 10px;    /* Margem parte superior */
-    margin-right: 20px;  /* Margem à direita */
-    margin-bottom: 15px; /* Margem parte inferior */
-    margin-left: 30px; /*Margem à esquerda */
-    text-align: left; /* Alinha o texto à esquerda */
+.introducao {
+    margin-top: 10px;
+    /* Margem parte superior */
+    margin-right: 20px;
+    /* Margem à direita */
+    margin-bottom: 15px;
+    /* Margem parte inferior */
+    margin-left: 30px;
+    /*Margem à esquerda */
+    text-align: left;
+    /* Alinha o texto à esquerda */
 }
 
 /* Estilos para o container */
@@ -54,10 +68,9 @@ body{
 }
 
 .register input[type="email"],
-.register input[type="password"] 
-.register input[type="nome"]
-.register input[type="date"]{
-    border: 1px solid var(--form-border-color); /* Usa a cor da borda definida */
+.register input[type="password"] .register input[type="nome"] .register input[type="date"] {
+    border: 1px solid var(--form-border-color);
+    /* Usa a cor da borda definida */
     border-radius: 4px;
     height: 38px;
     line-height: 38px;
@@ -66,7 +79,8 @@ body{
 }
 
 .register button[type="submit"] {
-    background: var(--primeira-cor); /* Usa a primeira cor como plano de fundo do botão */
+    background: var(--primeira-cor);
+    /* Usa a primeira cor como plano de fundo do botão */
     color: white;
     border: none;
     border-radius: 4px;
@@ -78,7 +92,8 @@ body{
 }
 
 .register button[type="submit"]:hover {
-    background: var(--segunda-cor); /* Muda a cor de fundo ao passar o mouse */
+    background: var(--segunda-cor);
+    /* Muda a cor de fundo ao passar o mouse */
 }
 
 /* Estilos para a mensagem de erro */
@@ -109,18 +124,25 @@ body{
     background-color: #333;
     overflow: hidden;
     padding: 10px;
-    border-radius: 0; /* Remova a borda arredondada */
-    position: fixed; /* Fixa a barra de navegação no topo */
-    top: 0; /* Coloca a barra de navegação no topo da página */
-    left: 0; /* Coloca a barra de navegação no lado esquerdo da página */
-    width: 100%; /* Faz a barra de navegação ocupar toda a largura */
-    z-index: 999; /* Garante que a barra de navegação esteja acima de outros elementos */
+    border-radius: 0;
+    /* Remova a borda arredondada */
+    position: fixed;
+    /* Fixa a barra de navegação no topo */
+    top: 0;
+    /* Coloca a barra de navegação no topo da página */
+    left: 0;
+    /* Coloca a barra de navegação no lado esquerdo da página */
+    width: 100%;
+    /* Faz a barra de navegação ocupar toda a largura */
+    z-index: 999;
+    /* Garante que a barra de navegação esteja acima de outros elementos */
     text-align: right;
 }
 
 /* Estilize os links da nave */
 .navbar a {
-    display: inline-block; /* Coloca os links em linha */
+    display: inline-block;
+    /* Coloca os links em linha */
     color: white;
     text-decoration: none;
     padding: 14px 16px;
@@ -152,8 +174,10 @@ footer {
     text-align: center;
     padding: 10px;
     position: absolute;
-    bottom: 0; /* Define o rodapé na parte inferior da janela */
-    width: 100%; /* Faz o rodapé ocupar toda a largura da página */
+    bottom: 0;
+    /* Define o rodapé na parte inferior da janela */
+    width: 100%;
+    /* Faz o rodapé ocupar toda a largura da página */
 }
 
 /* Estilos para os links e imagens das empresas parceiras */
@@ -171,8 +195,10 @@ footer {
 
 /* Defina um tamanho máximo para a imagem */
 .parceiro img {
-    max-width: 300px; /* Define o tamanho máximo da imagem em pixels */
-    height: auto; /* Mantém a proporção original da imagem */
+    max-width: 300px;
+    /* Define o tamanho máximo da imagem em pixels */
+    height: auto;
+    /* Mantém a proporção original da imagem */
 }
 
 /* Estilos para quando o mouse estiver sobre o link */
@@ -201,12 +227,14 @@ footer {
 }
 
 .topo img {
-    width: 100%; /* ou ajuste para a largura desejada */
-    height: auto; /* para manter a proporção original da imagem */
+    width: 100%;
+    /* ou ajuste para a largura desejada */
+    height: auto;
+    /* para manter a proporção original da imagem */
 }
 
-.signup-container{
-    display:grid;
+.signup-container {
+    display: grid;
     grid-template-areas: 'left right';
     max-width: 900px;
 }
@@ -215,21 +243,22 @@ footer {
     background: var(--primeira-cor);
 }
 
-.right-container{
-background: lighten(var(--primary-bg-color), 5%);
-display: grid;
-grid-template-areas: "." ".";
-width: 500px;
+.right-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.cachorroregistro{
+.cachorroregistro {
     align-items: center;
     display: grid;
     grid-template-areas: ". .";
     position: absolute;
     left: 0;
-bottom: 0;
-   background-attachment: fixed;
+    bottom: 0;
+    background-attachment: fixed;
 }
 
 
@@ -260,7 +289,7 @@ bottom: 0;
     flex-wrap: wrap;
     gap: 100px 50px;
     padding: 100px 50px;
-    
+
 }
 
 .grupo .card {
@@ -331,7 +360,7 @@ bottom: 0;
 }
 
 .grupo .card .content p {
-    color: #333;
+    color: rgb(51, 51, 51);
 }
 
 .grupo .card .content a {
@@ -368,18 +397,19 @@ bottom: 0;
         font-size: 0.9rem;
     }
 
-    .card{
+    .card {
         position: left;
     }
-    
+
 
 }
-.navbar .message { 
-    color:#fff ;
-    font-family: Arial, sans-serif; 
-    text-align: left; 
-    position: absolute; 
-    top: 0; 
+
+.navbar .message {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    position: absolute;
+    top: 0;
     left: 0;
     font-size: 15px;
 }
@@ -406,171 +436,186 @@ bottom: 0;
     font-size: 32px;
     font-weight: bold;
     margin-right: 20px;
-  }
+}
 
-  .title {
+.title {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
-  }
+}
 
-  .introducao p{
+.introducao p {
     font-size: 16px;
-      }
+}
 
-      .introducao {
-        font-family: 'Roboto', Arial, sans-serif;
-        display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  display: flex;
-  align-items: center;
-      }
+.introducao {
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    display: flex;
+    align-items: center;
+}
 
-      .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 5px;
-        height: 5px;
-      }
-      
-      .introducao img {
-        max-width: 400px;
-
-} */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 5px;
+    height: 5px;
+}
 
 .introducao img {
-    float: left; /* imagem à esquerda */
-    width: 50%; /* Define a largura da imagem para ocupar metade do contêiner */
-    height: auto; /* Mantém a proporção da imagem */
-    margin-right: 20px; /* Adiciona espaço entre a imagem e o texto */
-  }
+    max-width: 400px;
 
-  .introducao p{
-    padding-left: 20px; /* Adiciona algum espaço à esquerda do texto */
+}
+
+*/ .introducao img {
+    float: left;
+    /* imagem à esquerda */
+    width: 50%;
+    /* Define a largura da imagem para ocupar metade do contêiner */
+    height: auto;
+    /* Mantém a proporção da imagem */
+    margin-right: 20px;
+    /* Adiciona espaço entre a imagem e o texto */
+}
+
+.introducao p {
+    padding-left: 20px;
+    /* Adiciona algum espaço à esquerda do texto */
     padding-top: 20px;
-      }
-      
-      .introducao {
-        font-family: 'Nunito', sans-serif;
+}
 
-      }
+.introducao {
+    font-family: 'Nunito', sans-serif;
 
-    .senhaperdida{
-background-color: #b81010;
-border-radius: 15px;
-font-family: 'Nunito', sans-serif;
-color:#fff 
+}
 
-    }
-
+.senhaperdida {
+    background-color: #b81010;
+    border-radius: 15px;
+    font-family: 'Nunito', sans-serif;
+    color: #fff
+}
 
 
-    /* estilização da página de login */
-    body #login {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-    }
-    
 
-    input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    button {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    #submit {
-        background-color: #3498db;
-        color: #fff;
-    }
-
-    a {
-        margin-top: 10px;
-        color: rgb(20, 198, 243);
-        cursor: pointer;
-    }
-
-    p {
-        margin-top: 10px;
-        color: #054570;
-        text-align: center;
-    }
-
-    .butõesGrupo {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    #registerBotão, #voltarbotão {
-        width: calc(50% - 5px);
-        margin: 10px 2.5px;
-    }
-
-    #registerBotão {
-        border: none;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    #voltarbotão {
-     
-        float: right;
-        border: none;
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .imgFundoLogin {
-        background-image: url('../img/fundopáginaLOGIN.jpeg'); /* Substitua pelo caminho real da sua imagem de fundo */
-        background-size: cover; /* Para cobrir toda a tela */
-        background-position: center; /* Para centralizar a imagem */
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-    }
-    #FundoLogin {
-        align-items: center;
-        background: var(--primeira-cor); /* Usa a primeira cor como plano de fundo */
-        color: var(--cor-fonte); /* Usa a cor da fonte definida */
-        display: grid;
-        font-family: var(--familia-fonte); /* Usa a família de fontes definida */
-        font-size: 14px;
-        font-weight: 400;
-        height: 100vh;
-        justify-items: center;
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248)); /* Gradiente radial do azul claro para o mais escuro */
-        overflow: hidden; /* Isso evita barras de rolagem, se desejar */
-    }
+/* estilização da página de login */
+body #login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
 
 
-    /* estilização da página esqueceu senha */
-     #FundoEsqueceuSenha{
-    background-size: cover; /* Para cobrir toda a tela */
-    background-position: center; /* Para centralizar a imagem */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit {
+    background-color: #3498db;
+    color: #fff;
+}
+
+a {
+    margin-top: 10px;
+    color: rgb(20, 198, 243);
+    cursor: pointer;
+}
+
+p {
+    margin-top: 10px;
+    color: #054570;
+    text-align: center;
+}
+
+.butõesGrupo {
+    display: flex;
+    justify-content: space-between;
+}
+
+#registerBotão,
+#voltarbotão {
+    width: calc(50% - 5px);
+    margin: 10px 2.5px;
+}
+
+#registerBotão {
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#voltarbotão {
+    float: right;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.imgFundoLogin {
+    background-image: url('../img/fundopáginaLOGIN.jpeg');
+    /* Substitua pelo caminho real da sua imagem de fundo */
+    background-size: cover;
+    /* Para cobrir toda a tela */
+    background-position: center;
+    /* Para centralizar a imagem */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#FundoLogin {
+    align-items: center;
+    background: var(--primeira-cor);
+    /* Usa a primeira cor como plano de fundo */
+    color: var(--cor-fonte);
+    /* Usa a cor da fonte definida */
+    display: grid;
+    font-family: var(--familia-fonte);
+    /* Usa a família de fontes definida */
+    font-size: 14px;
+    font-weight: 400;
+    height: 100vh;
+    justify-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248));
+    /* Gradiente radial do azul claro para o mais escuro */
+    overflow: hidden;
+    /* Isso evita barras de rolagem, se desejar */
+}
+
+
+/* estilização da página esqueceu senha */
+#FundoEsqueceuSenha {
+    background-size: cover;
+    /* Para cobrir toda a tela */
+    background-position: center;
+    /* Para centralizar a imagem */
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -579,21 +624,74 @@ color:#fff
     background: radial-gradient(circle at center, #d1eaee, rgb(248, 192, 248));
     margin-top: 10px;
     margin-left: 10px;
-     }
+}
 
-     #submit2 {
-        background-color: #3498db;
-        color: #fff;
-    }
-    
+#submit2 {
+    background-color: #3498db;
+    color: #fff;
+}
 
-    #submit3 {
-        background-color: #3498db;
-        color: #fff;
-    }
 
-    #imgcreatepost{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
+#submit3 {
+    background-color: #3498db;
+    color: #fff;
+}
+
+
+.imgEsqueceuSenha {
+    background-image: url('../img/vistaLateralCachorro.jpg');
+    /* Substitua pelo caminho real da sua imagem de fundo */
+    background-size: cover;
+    /* Para cobrir toda a tela */
+    background-position: center;
+    /* Para centralizar a imagem */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.loginEsqueceuSenha {
+    margin-left: 300px;
+}
+
+
+/*estilização página creatpost*/
+
+#createpost {
+    align-items: center;
+    background: var(--primeira-cor);
+    /* Usa a primeira cor como plano de fundo */
+    color: var(--cor-fonte);
+    /* Usa a cor da fonte definida */
+    display: grid;
+    font-family: var(--familia-fonte);
+    /* Usa a família de fontes definida */
+    font-size: 14px;
+    font-weight: 400;
+    height: 100vh;
+    justify-items: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: radial-gradient(circle at center, #d1eaee, rgb(248, 192, 248));
+    overflow: hidden;
+    /* Isso evita barras de rolagem, se desejar */
+}
+
+
+.imgcreatepost {
+    background-size: cover;
+    /* Para cobrir toda a tela */
+    background-position: center;
+    /* Para centralizar a imagem */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
