@@ -25,8 +25,7 @@
             </p>
             <form action="<?= site_url('user/delete/' . session()->get('user_id')); ?>" method="post">
                 <button type="submit"
-                    onclick="return confirm('Tem certeza que deseja excluir sua conta? Essa ação é irreversível.');">Excluir
-                    Conta</button>
+                    onclick="return confirm('Tem certeza que deseja excluir sua conta? Essa ação é irreversível.');">Excluir Conta</button>
             </form>
         </div>
     </div>

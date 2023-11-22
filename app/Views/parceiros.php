@@ -14,59 +14,23 @@
         <a href="/login">Criar post</a>
         <a href="/login">Entrar</a>
     </div>
-   
-        <!-- <div class="parceiro-container">
-    <a href="https://www.youtube.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/saudeanimal.jpeg') ?>" alt="Saúde Animal">
-    </a>
 
-    <a href="https://www.google.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/logoclinicvet.jpg') ?>" alt="Clinic Vet">
-    </a>
-
-    <a href="https://www.google.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/arara.jpg') ?>" alt="Clinic Vet">
-    </a>
-
-    <a href="https://www.google.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/fundo.jpg') ?>" alt="Clinic Vet">
-    </a>
-
-    <a href="https://www.google.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/cachorro.jpg') ?>" alt="Clinic Vet">
-    </a>
-
-    <a href="https://www.google.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/laga.jpg') ?>" alt="Clinic Vet">
-    </a>
-
-    <a href="https://www.google.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/cachorro1.jpg') ?>" alt="Clinic Vet">
-    </a>
-
-    <a href="https://www.google.com" class="parceiro" target="_blank">
-        <img src="<?= base_url('assets/img/onca.webp') ?>" alt="Clinic Vet">
-    </a> -->
-
-
-
-
-
+   <h1 id="fraseParceiros">Parceiros do MY PET Blog</h1>
 
 <body id="pagina">
-    <div class="grupo">
-        <div class="card" style="--clr: #009688">
+ <div class="grupo">
+            <div class="card" style="--clr: #009688">
             <div class="img-box">
-                <img src=<? base_url('assets/img/onca.webp') ?> alt="Clinic Vet">
+            <img src=<?= base_url('assets/img/saudeanimal.jpg') ?> alt="Clinic Vet">
             </div>
             <div class="content">
-                <h2>Leafs</h2>
+                <h2>Pets Shops</h2>
                 <p> 
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Architecto, hic? Magnam eum error saepe doloribus corrupti
                     repellat quisquam alias doloremque!
                 </p>
-                <a href="">Read More</a>
+                <a href="">Saiba Mais</a>
             </div>
         </div>
         <div class="card" style="--clr: #FF3E7F">
@@ -74,13 +38,13 @@
                 <img src=<?= base_url('assets/img/cachorro1.jpg') ?> alt="Clinic Vet">
             </div>
             <div class="content">
-                <h2>Fruits</h2>
+                <h2>Hospedagem para Animais</h2>
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Architecto, hic? Magnam eum error saepe doloribus corrupti
                     repellat quisquam alias doloremque!
                 </p>
-                <a href="">Read More</a>
+                <a href="">Saiba Mais</a>
             </div>
         </div>
         <div class="card" style="--clr: #03A9F4">
@@ -88,29 +52,30 @@
                 <img src=<?= base_url('assets/img/logoclinicvet.jpg') ?> alt="Clinic Vet">
             </div>
             <div class="content">
-                <h2>Flowers</h2>
+                <h2>Clínicas Vaterinárias</h2>
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                     Architecto, hic? Magnam eum error saepe doloribus corrupti
                     repellat quisquam alias doloremque!
                 </p>
-                <a href="">Read More</a>
+                <a href="">Saiba Mais</a>
             </div>
         </div>
     </div>
 </body>
-
-
-
 </html>
+</html>
+</body>
 
-<a href="<?= site_url('blog'); ?>">Voltar para o blog</a>
-</div>
+
+<div class="botãoPaceiro"> <br><br><br><br><br><br>
+    <button id="voltarbotãoParceiros"><a href="<?= site_url('index.php'); ?>">Volte ao blog</a></button>         
+    </div>
+
 <footer>
     <p>&copy;
         <?php echo date("Y"); ?> Blog XYZ. Todos os direitos reservados.
     </p>
 </footer>
-</body>
 
-</html>
+
