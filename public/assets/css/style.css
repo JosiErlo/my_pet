@@ -435,23 +435,6 @@ footer {
 }
 
 
-/* RESPONSIVIDADE */
-
-/* @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    main {
-        flex: 2;
-        padding: 20px;
-    }
-<<<<<<< HEAD
-    
-}
-} */
-
 
 .introducao h1 {
     font-size: 32px;
@@ -719,33 +702,45 @@ p {
 
 
 /* Estilização página registro */
-.cachorroregistro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png');
-    background-size: cover;
-    background-position: left;
-    width: 650px; /* Ajuste a largura conforme necessário */
-    height: 650px;
-    padding: 20px;
-    box-sizing: border-box;
+#registrobody{ 
     margin: 0;
-    background-attachment: scroll; /* Removido o background-attachment: fixed; */
-    margin-left: 50px;
-    z-index: -1;
+    padding: 0;
+    }
+
+
+.conteinerregistro {
+    position: fixed;
+    top: 50; /* Alinhar no topo */
+    left: 20px; /* Ajustado para 20px à esquerda */
+    width: 600px;
+    height: 700px;
+    background-color: #a1dcf0;
+    left: 250px;
+    border-top-left-radius: 20px; /* Arredonda o canto superior esquerdo */
+    border-bottom-left-radius: 20px;
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.cachorroregistro .loginCachorroRegistro {
-    margin-left: 1149px;
-    width: 70%;
-    width: 450px;
-    z-index: 1;
-    width: 500px;
-    padding: 20px;  
+.cachorroregistro {
+    max-width: 300px; /* A imagem tem no máximo 100% da largura da div */
+    max-height: 300px; /* A imagem tem no máximo 100% da altura da div */
+    z-index: 1; /* Alterado para um valor maior para colocar a imagem na frente */
+    position: fixed;
+    left: 398px;
+    margin-bottom: 133px;
 }
 
+.loginCachorroRegistro {
+    left: 850px; /* Adicionado para compensar o deslocamento da imagem */
+    width: 600px; /* Ajuste a largura conforme necessário */
+    height: 700px;
+    padding: 20px;
+    position: fixed;
+    background-color: rgb(233, 217, 233);
+    border-top-right-radius: 20px; /* Arredonda o canto superior direito */
+    border-bottom-right-radius: 20px; 
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.2);
+}
 
 
 
