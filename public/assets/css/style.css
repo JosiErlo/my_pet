@@ -704,7 +704,6 @@ p {
     /* Isso evita barras de rolagem, se desejar */
 }
 
-
 .imgcreatepost {
     background-size: cover;
     /* Para cobrir toda a tela */
@@ -716,6 +715,41 @@ p {
     align-items: center;
     justify-content: center;
 }
+
+
+
+/* Estilização página registro */
+.cachorroregistro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-542207-jpeg.png');
+    background-size: cover;
+    background-position: left;
+    width: 650px; /* Ajuste a largura conforme necessário */
+    height: 650px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0;
+    background-attachment: scroll; /* Removido o background-attachment: fixed; */
+    margin-left: 50px;
+    z-index: -1;
+}
+
+.cachorroregistro .loginCachorroRegistro {
+    margin-left: 1149px;
+    width: 70%;
+    width: 450px;
+    z-index: 1;
+    width: 500px;
+    padding: 20px;  
+}
+
+
+
+
+/* Responsividade */
 @media (max-width: 768px) {
     body {
         font-size: 12px;
