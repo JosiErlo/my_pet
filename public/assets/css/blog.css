@@ -1,0 +1,527 @@
+/* Defina as variáveis de cores e fontes */
+:root {
+    --primeira-cor: #abdbf7;
+    /* Define uma variável para a primeira cor */
+    --segunda-cor: #717a82;
+    /* Define uma variável para a segunda cor */
+    --cor-fonte: rgba(0, 0, 0, .8);
+    /* Define uma variável para a cor da fonte com transparência */
+    --familia-fonte: 'Montserrat', sans-serif;
+    /* Define a família de fontes */
+    --form-border-color: rgba(0, 0, 0, .1);
+    /* Define a cor da borda do formulário com transparência */
+}
+
+/* Estilos para o corpo da página */
+body {
+    align-items: center;
+    background: var(--primeira-cor);
+    /* Usa a primeira cor como plano de fundo */
+    color: var(--cor-fonte);
+    /* Usa a cor da fonte definida */
+    display: grid;
+    font-family: var(--familia-fonte);
+    /* Usa a família de fontes definida */
+    font-size: 14px;
+    font-weight: 400;
+    height: 100vh;
+    justify-items: center;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 100px;
+    background: radial-gradient(circle at center, #e9f9fc, rgb(192, 242, 248));
+    /* Gradiente radial do azul claro para o mais escuro */
+}
+
+
+.introducao {
+    margin-top: 10px;
+    /* Margem parte superior */
+    margin-right: 20px;
+    /* Margem à direita */
+    margin-bottom: 15px;
+    /* Margem parte inferior */
+    margin-left: 30px;
+    /*Margem à esquerda */
+    text-align: left;
+    /* Alinha o texto à esquerda */
+}
+
+/* Estilos para o container */
+.register {
+    display: grid;
+    place-items: center;
+}
+
+/* Estilos para o formulário */
+.register form {
+    text-align: center;
+    right: 300px;
+    align-items: center;
+}
+
+.register label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.register input[type="email"],
+.register input[type="password"] .register input[type="nome"] .register input[type="date"] {
+    border: 1px solid var(--form-border-color);
+    /* Usa a cor da borda definida */
+    border-radius: 4px;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 5px;
+    width: 100%;
+}
+
+.register button[type="submit"] {
+    background: var(--primeira-cor);
+    /* Usa a primeira cor como plano de fundo do botão */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    height: 38px;
+    line-height: 38px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.register button[type="submit"]:hover {
+    background: var(--segunda-cor);
+    /* Muda a cor de fundo ao passar o mouse */
+}
+
+/* Estilos para a mensagem de erro */
+.alert.alert-danger {
+    background: red;
+    color: white;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Estilos para a seção de vídeo */
+.video-container {
+    display: flex;
+    text-align: left;
+}
+
+.video {
+    width: 100%;
+    display: block;
+    margin: 0;
+}
+
+
+/*/* Estilos para a barra de navegação */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 0;
+    /* Remova a borda arredondada */
+    position: fixed;
+    /* Fixa a barra de navegação no topo */
+    top: 0;
+    /* Coloca a barra de navegação no topo da página */
+    left: 0;
+    /* Coloca a barra de navegação no lado esquerdo da página */
+    width: 100%;
+    /* Faz a barra de navegação ocupar toda a largura */
+    z-index: 999;
+    /* Garante que a barra de navegação esteja acima de outros elementos */
+    text-align: right;
+}
+
+/* Estilize os links da nave */
+.navbar a {
+    display: inline-block;
+    /* Coloca os links em linha */
+    color: white;
+    text-decoration: none;
+    padding: 14px 16px;
+}
+
+/* Altere a cor do link quando o mouse passar por cima */
+.navbar a:hover {
+    background: radial-gradient(circle at center, #cfedf1, rgb(245, 223, 245));
+    color: rgb(24, 37, 158);
+}
+
+/* Estilos para a seção de blog */
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+/* Estilos para os links e imagens das empresas parceiras */
+.parceiro {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Defina um tamanho máximo para a imagem */
+.parceiro img {
+    max-width: 300px;
+    /* Define o tamanho máximo da imagem em pixels */
+    height: auto;
+    /* Mantém a proporção original da imagem */
+}
+
+/* Estilos para quando o mouse estiver sobre o link */
+.parceiro:hover {
+    background-color: #ddd;
+}
+
+/* Estilos para a seção de criação de post */
+.createpost {
+    background-color: #ba9b9b;
+    padding: 50px;
+    margin: 10px;
+    border-radius: 30px;
+}
+
+/* Importação de fonte do Google Fonts (Montserrat) */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+
+.topo {
+    padding: 5px;
+    margin: 5px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-attachment: fixed;
+}
+
+.topo img {
+    width: 100%;
+    /* ou ajuste para a largura desejada */
+    height: auto;
+    /* para manter a proporção original da imagem */
+}
+
+.signup-container {
+    display: grid;
+    grid-template-areas: 'left right';
+    max-width: 900px;
+}
+
+.left-container {
+    background: var(--primeira-cor);
+}
+
+.right-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.cachorroregistro {
+    align-items: center;
+    display: grid;
+    grid-template-areas: ". .";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-attachment: fixed;
+}
+.post-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os posts se movam para a linha abaixo quando não houver espaço suficiente */
+    justify-content: space-between; /* Distribui os posts uniformemente */
+    gap: 20px; /* Espaçamento entre os posts */
+}
+
+.card {
+    width: calc(33.33% - 20px); /* Cada post ocupa aproximadamente 1/3 da largura com espaçamento entre eles */
+    margin-bottom: 20px; /* Espaçamento na parte inferior de cada post */
+}
+
+
+/* Estilização página parceiros  */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+#pagina {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.grupo {
+    display: flex;
+    justify-content: space-between; /* Distribui as divs uniformemente */
+    gap: 20px; /* Espaçamento entre as divs */
+    flex-direction: column; /* Organiza as divs em colunas */
+    padding: 20px; /* Adiciona um preenchimento ao redor do grupo para melhorar a aparência */
+}
+
+.grupo .card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 350px;
+    max-width: 100%;
+    height: 300px;
+    background: white;
+    border-radius: 20px;
+    transition: 0.5s;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+   
+}
+
+.grupo .card:hover {
+    height: 400px;
+    cursor: pointer;
+}
+
+.grupo .card .img-box {
+    position: absolute;
+    top: 20px;
+    width: 300px;
+    height: 220px;
+    background: #333;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.grupo .card:hover .img-box {
+    top: -100px;
+    scale: 0.75;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+.grupo .card .img-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grupo .card .content {
+    position: absolute;
+    top: 252px;
+    width: 100%;
+    height: 35px;
+    padding: 0 30px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.grupo .card:hover .content {
+    top: 130px;
+    height: 250px;
+}
+
+.grupo .card .content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--clr);
+}
+
+.grupo .card .content p {
+    color: rgb(51, 51, 51);
+}
+
+.grupo .card .content a {
+    position: relative;
+    top: 15px;
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    background: var(--clr);
+    color: white;
+    font-weight: 500;
+}
+
+.grupo .card .content a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+    .grupo .card {
+        width: 230px;
+        border-radius: 15px;
+    }
+
+    .grupo .card .img-box {
+        width: 185px;
+        border-radius: 10px;
+    }
+
+    .grupo .card .content p {
+        font-size: 0.8rem;
+    }
+
+    .grupo .card .content a {
+        font-size: 0.9rem;
+    }
+
+    .card {
+        position: left;
+    }
+}
+
+.navbar .message {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    left: 5;
+    font-size: 15px;
+}
+
+
+
+
+a {
+    margin-top: 10px;
+    color: rgb(20, 198, 243);
+    cursor: pointer;
+}
+
+p {
+    margin-top: 10px;
+    color: #054570;
+    text-align: center;
+}
+
+
+
+
+/*Estilização Blog*/
+.introducao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.texto {
+    flex: 1;
+    padding-right: 20px; /* Ajuste o espaçamento conforme necessário */
+    margin-left: 300px;
+    text-align: left;
+}
+
+.imagemBlog {
+    flex: 1;
+    margin-right: 300px;
+    margin-left: 50px;
+    max-width: 600px; /* Defina a largura máxima do contêiner da imagem */
+    width: 1000px;
+    height: 200px;
+    
+}
+/* imagem dos animais */
+.imagemBlog img {
+    width: 600px; /* Defina a largura desejada em pixels */
+    height: auto; 
+}
+
+#FundoBlog {
+    background: radial-gradient(circle at center, #d1eaee, rgba(241, 239, 253, 0.8) 70%);
+}
+
+.btnfiltrar {
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    background-color: #3498db;
+    color: #fff;
+    border: none; 
+    border-radius: 5px;
+    margin-bottom: 90px;
+    background-image: linear-gradient(to right, #3498db 50%, #2c3e50 50%);
+    background-size: 200% 100%;
+    transition: background-position 0.3s ease;
+}
+
+.btnfiltrar:hover {
+    background-position: -100% 0;
+}
+
+.filtro-container {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        font-size: 12px;
+    }
+
+    .grupo .card {
+        width: 230px;
+        border-radius: 15px;
+    }
+
+    .grupo .card .img-box {
+        width: 185px;
+        border-radius: 10px;
+    }
+
+    .grupo .card .content p {
+        font-size: 0.8rem;
+    }
+
+    .grupo .card .content a {
+        font-size: 0.9rem;
+    }
+
+}
+
+.btnexcluir{
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+
+}

@@ -150,7 +150,7 @@ body {
 
 /* Altere a cor do link quando o mouse passar por cima */
 .navbar a:hover {
-    background-color: #b81010;
+    background: radial-gradient(circle at center, #cfedf1, rgb(245, 223, 245));
     color: rgb(24, 37, 158);
 }
 
@@ -417,7 +417,7 @@ footer {
     text-align: left;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 5;
     font-size: 15px;
 }
 
@@ -743,6 +743,40 @@ p {
 }
 
 
+/*Estilização Blog*/
+.introducao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.texto {
+    flex: 1;
+    padding-right: 20px; /* Ajuste o espaçamento conforme necessário */
+    margin-left: 300px;
+    text-align: left;
+}
+
+.imagemBlog {
+    flex: 1;
+    margin-right: 300px;
+    margin-left: 50px;
+    max-width: 600px; /* Defina a largura máxima do contêiner da imagem */
+    width: 1000px;
+    height: 200px;
+}
+
+.imagemBlog img {
+    width: 800px; /* Defina a largura desejada em pixels */
+    height: auto; 
+}
+
+#FundoBlog {
+    background: radial-gradient(circle at center, #d1eaee, rgba(241, 239, 253, 0.8) 70%);
+}
+
+
+
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -767,4 +801,12 @@ p {
     .grupo .card .content a {
         font-size: 0.9rem;
     }
+
+}
+
+.btnexcluir{
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+
 }
